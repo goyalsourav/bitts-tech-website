@@ -62,7 +62,7 @@ export function Process() {
               key={phase.title}
               className={getProcessPlacement(index)}
             >
-              <ProcessCard phase={phase} index={index} featured={index === 3} />
+              <ProcessCard phase={phase} />
             </StaggerItem>
           ))}
         </StaggerGroup>
@@ -73,12 +73,8 @@ export function Process() {
 
 function ProcessCard({
   phase,
-  index,
-  featured = false,
 }: {
   phase: (typeof phases)[number]
-  index: number
-  featured?: boolean
 }) {
   const Icon = phase.icon
 
@@ -86,36 +82,25 @@ function ProcessCard({
     <motion.article
       whileHover={{ y: -6 }}
       transition={{ type: 'spring', stiffness: 260, damping: 22 }}
-      className={`premium-surface group relative flex h-full flex-col overflow-hidden rounded-2xl p-6 ${
-        featured ? 'min-h-[250px] lg:p-8' : 'min-h-[220px]'
-      }`}
+      className="premium-surface group relative flex h-full min-h-[220px] flex-col overflow-hidden rounded-2xl p-6"
     >
-      {featured && (
-        <span className="pointer-events-none absolute -right-10 -top-10 size-40 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 blur-3xl" />
-      )}
       <div className="flex items-start justify-between gap-4">
-        <span
-          className={`flex items-center justify-center rounded-xl bg-gradient-to-br transition-colors duration-500 group-hover:from-primary group-hover:to-accent group-hover:text-primary-foreground ${
-            featured
-              ? 'size-14 from-primary to-accent text-primary-foreground shadow-[0_18px_40px_-24px_rgba(40,80,200,0.9)]'
-              : 'size-11 from-primary/10 to-accent/15 text-primary'
-          }`}
-        >
-          <Icon className={featured ? 'size-6' : 'size-5'} />
+        <span className="flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary/10 to-accent/15 text-primary transition-colors duration-500 group-hover:from-primary group-hover:to-accent group-hover:text-primary-foreground">
+          <Icon className="size-5" />
         </span>
         <span className="font-mono text-sm font-semibold text-primary/45">
           {phase.label}
         </span>
       </div>
 
-      <div className={featured ? 'mt-10 flex flex-1 flex-col' : 'mt-8 flex flex-1 flex-col'}>
+      <div className="mt-8 flex flex-1 flex-col">
         <span className="text-xs font-bold uppercase tracking-[0.18em] text-accent">
           Step {phase.label}
         </span>
-        <h3 className={`mt-2 font-heading font-semibold text-foreground ${featured ? 'text-2xl' : 'text-lg'}`}>
+        <h3 className="mt-2 font-heading text-lg font-semibold text-foreground">
           {phase.title}
         </h3>
-        <p className={`mt-2 leading-relaxed text-muted-foreground ${featured ? 'max-w-2xl text-base' : 'text-sm'}`}>
+        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
           {phase.desc}
         </p>
       </div>

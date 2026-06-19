@@ -44,10 +44,10 @@ export function Industries() {
           </p>
         </div>
 
-        <StaggerGroup className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3" stagger={0.07}>
+        <StaggerGroup className="mt-14 grid grid-cols-1 gap-x-10 gap-y-1 sm:grid-cols-2 lg:grid-cols-3" stagger={0.05}>
           {industries.map((item) => (
-            <StaggerItem key={item.title} className="min-h-[230px]">
-              <Card item={item} />
+            <StaggerItem key={item.title}>
+              <IndustryLine item={item} />
             </StaggerItem>
           ))}
         </StaggerGroup>
@@ -56,20 +56,19 @@ export function Industries() {
   )
 }
 
-function Card({ item }: { item: (typeof industries)[number] }) {
+function IndustryLine({ item }: { item: (typeof industries)[number] }) {
   const Icon = item.icon
 
   return (
-    <div className="premium-surface group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl p-7 transition-transform duration-500 hover:-translate-y-1.5">
-      <div className="pointer-events-none absolute -right-8 -top-8 size-28 rounded-full bg-gradient-to-br from-primary/10 to-accent/15 blur-2xl transition-opacity group-hover:opacity-100" />
-      <span className="flex size-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-accent text-primary-foreground">
-        <Icon className="size-6" />
+    <div className="group flex min-h-16 items-center gap-4 border-b border-border/70 py-4 transition-colors hover:border-primary/35">
+      <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+        <Icon className="size-5" />
       </span>
-      <div className="mt-10">
-        <h3 className="font-heading text-xl font-semibold text-foreground">
+      <div className="min-w-0">
+        <h3 className="font-heading text-base font-semibold text-foreground">
           {item.title}
         </h3>
-        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+        <p className="truncate text-sm text-muted-foreground">
           {item.desc}
         </p>
       </div>
