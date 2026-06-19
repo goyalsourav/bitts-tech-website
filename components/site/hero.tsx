@@ -123,21 +123,7 @@ export function Hero() {
               )
             })}
           </motion.div>
-          <div className="mt-8">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-              Trusted by founders & business teams
-            </p>
-            <div className="mt-3 flex max-w-2xl flex-wrap gap-2">
-              {audiences.map((audience) => (
-                <span
-                  key={audience}
-                  className="rounded-full border border-border/70 bg-card/60 px-3 py-1.5 text-xs font-medium text-muted-foreground backdrop-blur"
-                >
-                  {audience}
-                </span>
-              ))}
-            </div>
-          </div>
+          <TrustedFlow />
         </motion.div>
 
         <motion.div
@@ -150,5 +136,37 @@ export function Hero() {
         </motion.div>
       </div>
     </section>
+  )
+}
+
+function TrustedFlow() {
+  const items = ['Trusted by founders & business teams', ...audiences]
+  const flow = [...items, ...items]
+
+  return (
+    <div className="mt-8 max-w-2xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
+      <motion.div
+        className="flex w-max items-center gap-2"
+        animate={{ x: ['0%', '-50%'] }}
+        transition={{ duration: 18, ease: 'linear', repeat: Infinity }}
+      >
+        {flow.map((item, index) => {
+          const isHeadline = item === items[0]
+
+          return (
+            <span
+              key={`${item}-${index}`}
+              className={
+                isHeadline
+                  ? 'mr-2 whitespace-nowrap text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground'
+                  : 'whitespace-nowrap rounded-full border border-border/70 bg-card/60 px-3 py-1.5 text-xs font-medium text-muted-foreground backdrop-blur'
+              }
+            >
+              {item}
+            </span>
+          )
+        })}
+      </motion.div>
+    </div>
   )
 }
