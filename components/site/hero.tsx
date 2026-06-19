@@ -9,6 +9,8 @@ import {
 import { ArrowRight, Sparkles, ShieldCheck, TimerReset, Workflow } from 'lucide-react'
 import { HeroVisual } from './hero-visual'
 
+const audiences = ['Startups', 'SME Teams', 'Agencies', 'Product Teams', 'Founders', 'Operations']
+
 export function Hero() {
   const ref = useRef<HTMLElement>(null)
 
@@ -54,13 +56,13 @@ export function Hero() {
           >
             <Sparkles className="size-3.5 text-accent" />
             <span className="truncate sm:whitespace-normal">
-              Premium Software & Digital Engineering
+              Scalable software for ambitious businesses
             </span>
           </motion.div>
 
           <h1 className="mt-7 max-w-3xl font-heading text-4xl font-bold leading-[1.05] tracking-tight text-foreground text-balance sm:text-5xl lg:text-6xl xl:text-[4.25rem]">
-            Build digital products that move{' '}
-            <span className="text-gradient">businesses forward</span>
+            Transform your growing business with{' '}
+            <span className="text-gradient">our IT solutions</span>
           </h1>
 
           <motion.p
@@ -70,9 +72,9 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.55 }}
             className="mt-6 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg"
           >
-            Bitts Tech creates custom websites, web applications, automation
-            systems, integrations, and reliable technical solutions for growing
-            businesses.
+            We design, build, and launch custom websites, web apps,
+            automations, and business systems that solve real operational
+            problems.
           </motion.p>
 
           <motion.div
@@ -86,14 +88,14 @@ export function Hero() {
               href="#contact"
               className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-[0_10px_30px_rgba(40,80,200,0.3)] transition-transform hover:-translate-y-0.5 sm:w-auto"
             >
-              Start a Project
+              Get in touch
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
             </a>
             <a
               href="#services"
               className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-border bg-card px-7 py-3.5 text-sm font-semibold text-foreground transition-colors hover:bg-muted sm:w-auto"
             >
-              Explore Services
+              Learn more
             </a>
           </motion.div>
 
@@ -105,9 +107,9 @@ export function Hero() {
             className="mt-10 flex max-w-2xl flex-wrap gap-3 text-sm text-muted-foreground"
           >
             {[
-              { icon: Workflow, label: '100% custom builds' },
-              { icon: TimerReset, label: 'Post-launch support' },
-              { icon: ShieldCheck, label: 'Scalable systems' },
+              { icon: Workflow, label: 'Projects delivered' },
+              { icon: TimerReset, label: '4.32x revenue lift' },
+              { icon: ShieldCheck, label: 'API + UI integrations' },
             ].map((item) => {
               const Icon = item.icon
               return (
@@ -121,6 +123,21 @@ export function Hero() {
               )
             })}
           </motion.div>
+          <div className="mt-8">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+              Trusted by founders & business teams
+            </p>
+            <div className="mt-3 flex max-w-2xl flex-wrap gap-2">
+              {audiences.map((audience) => (
+                <span
+                  key={audience}
+                  className="rounded-full border border-border/70 bg-card/60 px-3 py-1.5 text-xs font-medium text-muted-foreground backdrop-blur"
+                >
+                  {audience}
+                </span>
+              ))}
+            </div>
+          </div>
         </motion.div>
 
         <motion.div

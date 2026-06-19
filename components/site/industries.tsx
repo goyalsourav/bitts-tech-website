@@ -3,24 +3,26 @@
 import {
   GraduationCap,
   Plane,
-  Rocket,
   Briefcase,
-  Store,
   ShoppingBag,
   Building2,
-  UserRound,
+  HeartPulse,
+  Utensils,
+  Factory,
+  Workflow,
 } from 'lucide-react'
 import { StaggerGroup, StaggerItem } from './reveal'
 
 const industries = [
-  { icon: GraduationCap, title: 'Schools & Preschools', desc: 'Admissions, portals, and parent communication systems.' },
-  { icon: Plane, title: 'Travel Businesses', desc: 'Booking flows, itineraries, and reservation platforms.' },
-  { icon: Rocket, title: 'Startups', desc: 'MVPs and products built to launch fast and scale.' },
-  { icon: Briefcase, title: 'Service Agencies', desc: 'Client portals, dashboards, and workflow automation.' },
-  { icon: Store, title: 'Local Businesses', desc: 'Modern sites that bring in calls, leads, and footfall.' },
-  { icon: ShoppingBag, title: 'E-commerce Brands', desc: 'Storefronts and integrations that convert and retain.' },
-  { icon: Building2, title: 'Enterprises', desc: 'Robust internal tools and large-scale integrations.' },
-  { icon: UserRound, title: 'Personal Brands', desc: 'Standout portfolios and personal platforms.' },
+  { icon: Plane, title: 'Travel & Tourism', desc: 'Lead, booking, itinerary, and customer follow-up systems.' },
+  { icon: Building2, title: 'Construction & Real Estate', desc: 'Material, workforce, finance, and site visibility tools.' },
+  { icon: ShoppingBag, title: 'Retail & E-commerce', desc: 'Storefronts, inventory flows, and customer operations.' },
+  { icon: HeartPulse, title: 'Healthcare & Clinics', desc: 'Appointment, patient, and clinic workflow software.' },
+  { icon: GraduationCap, title: 'Education & Training', desc: 'Learning portals, admissions, and student management.' },
+  { icon: Utensils, title: 'Restaurants & Hospitality', desc: 'Booking, order, staff, and guest experience systems.' },
+  { icon: Briefcase, title: 'Professional Services', desc: 'Client portals, dashboards, and workflow automation.' },
+  { icon: Factory, title: 'Manufacturing & Supply', desc: 'Production, supply chain, and internal operations systems.' },
+  { icon: Workflow, title: 'Any Business With a Process', desc: 'If your work follows a process, we can turn it into software.' },
 ]
 
 export function Industries() {
@@ -34,11 +36,15 @@ export function Industries() {
             Industries
           </span>
           <h2 className="mt-5 font-heading text-3xl font-bold tracking-tight text-foreground text-balance sm:text-4xl lg:text-[2.85rem] lg:leading-[1.06]">
-            Solutions for Every Growing Business
+            We Build for Any Business
           </h2>
+          <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
+            Every industry has processes, workflows, and customers. We build
+            systems around those realities.
+          </p>
         </div>
 
-        <StaggerGroup className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4" stagger={0.07}>
+        <StaggerGroup className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3" stagger={0.07}>
           {industries.map((item) => (
             <StaggerItem key={item.title} className="min-h-[230px]">
               <Card item={item} />

@@ -5,9 +5,7 @@ import {
   ClipboardCheck,
   Code2,
   Compass,
-  LifeBuoy,
   Paintbrush,
-  Rocket,
   Search,
 } from 'lucide-react'
 import { SectionHeading } from './section-heading'
@@ -16,45 +14,33 @@ import { StaggerGroup, StaggerItem } from './reveal'
 const phases = [
   {
     icon: Search,
-    label: 'Listen',
-    title: 'Discovery Call',
-    desc: 'We understand the business, users, blockers, and the result you want.',
+    label: '01',
+    title: 'Discover',
+    desc: 'We understand your business, users, goals, and bottlenecks before suggesting tech.',
   },
   {
     icon: Compass,
-    label: 'Map',
-    title: 'Requirement Planning',
-    desc: 'Scope, features, priorities, and technical direction are made clear.',
+    label: '02',
+    title: 'Define',
+    desc: 'Scope, tech plan, and timeline are agreed and documented upfront.',
   },
   {
     icon: Paintbrush,
-    label: 'Shape',
-    title: 'UI/UX Design',
-    desc: 'We turn the plan into clean screens and a natural user journey.',
+    label: '03',
+    title: 'Design',
+    desc: 'We turn requirements into user flows, screens, and a development-ready plan.',
   },
   {
     icon: Code2,
-    label: 'Build',
-    title: 'Development',
-    desc: 'The product is engineered with scalable, maintainable code.',
+    label: '04',
+    title: 'Build',
+    desc: 'We ship responsive, secure features with regular progress updates.',
   },
   {
     icon: ClipboardCheck,
-    label: 'Verify',
-    title: 'Testing',
-    desc: 'We check behavior, performance, responsiveness, and polish.',
-  },
-  {
-    icon: Rocket,
-    label: 'Ship',
-    title: 'Launch',
-    desc: 'Deployment, domain setup, and go-live happen with confidence.',
-  },
-  {
-    icon: LifeBuoy,
-    label: 'Care',
-    title: 'Maintenance & Support',
-    desc: 'We keep improving, monitoring, and supporting after launch.',
+    label: '05',
+    title: 'Support',
+    desc: 'We monitor, improve, and support your product after it goes live.',
   },
 ]
 
@@ -65,12 +51,12 @@ export function Process() {
       <div className="pointer-events-none absolute inset-0 bg-dotgrid opacity-40" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeading
-          eyebrow="Process"
-          title="Our Process Is Simple, Clear, and Reliable"
-          description="A transparent path from first conversation to long-term partnership."
+          eyebrow="How we work"
+          title="Simple Process. No Surprises."
+          description="Clear scope, clean delivery, and support that stays after launch."
         />
 
-        <StaggerGroup className="relative mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-12" stagger={0.06}>
+        <StaggerGroup className="relative mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-10" stagger={0.06}>
           {phases.map((phase, index) => (
             <StaggerItem
               key={phase.title}
@@ -118,13 +104,13 @@ function ProcessCard({
           <Icon className={featured ? 'size-6' : 'size-5'} />
         </span>
         <span className="font-mono text-sm font-semibold text-primary/45">
-          {String(index + 1).padStart(2, '0')}
+          {phase.label}
         </span>
       </div>
 
       <div className={featured ? 'mt-10 flex flex-1 flex-col' : 'mt-8 flex flex-1 flex-col'}>
         <span className="text-xs font-bold uppercase tracking-[0.18em] text-accent">
-          {phase.label}
+          Step {phase.label}
         </span>
         <h3 className={`mt-2 font-heading font-semibold text-foreground ${featured ? 'text-2xl' : 'text-lg'}`}>
           {phase.title}
@@ -139,13 +125,11 @@ function ProcessCard({
 
 function getProcessPlacement(index: number) {
   const placements = [
-    'sm:col-span-1 lg:col-span-4',
-    'sm:col-span-1 lg:col-span-4',
-    'sm:col-span-1 lg:col-span-4',
-    'sm:col-span-2 lg:col-span-6 lg:col-start-4',
-    'sm:col-span-1 lg:col-span-4',
-    'sm:col-span-1 lg:col-span-4',
-    'sm:col-span-2 lg:col-span-4',
+    'sm:col-span-1 lg:col-span-2',
+    'sm:col-span-1 lg:col-span-2',
+    'sm:col-span-1 lg:col-span-2',
+    'sm:col-span-1 lg:col-span-2',
+    'sm:col-span-2 lg:col-span-2',
   ]
 
   return placements[index]

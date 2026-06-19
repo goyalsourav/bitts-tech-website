@@ -7,9 +7,9 @@ import { Logo } from './logo'
 
 const links = [
   { label: 'Services', href: '#services' },
+  { label: 'Our Work', href: '#showcase' },
   { label: 'Process', href: '#process' },
-  { label: 'Showcase', href: '#showcase' },
-  { label: 'Industries', href: '#industries' },
+  { label: 'FAQs', href: '#faqs' },
 ]
 
 export function Navbar() {
@@ -62,7 +62,7 @@ export function Navbar() {
             href="#contact"
             className="hidden rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-[0_6px_20px_rgba(40,80,200,0.25)] transition-transform hover:-translate-y-0.5 sm:inline-flex"
           >
-            Start a Project
+            Get in touch
           </a>
           <button
             type="button"
@@ -99,7 +99,7 @@ export function Navbar() {
                 onClick={() => setOpen(false)}
                 className="mt-2 rounded-xl bg-primary px-4 py-3 text-center text-base font-semibold text-primary-foreground"
               >
-                Start a Project
+                Get in touch
               </a>
             </div>
           </motion.div>

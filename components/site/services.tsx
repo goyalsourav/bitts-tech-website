@@ -6,10 +6,8 @@ import {
   AppWindow,
   Bot,
   Plug,
-  LayoutTemplate,
-  Gauge,
-  ShieldCheck,
-  MessagesSquare,
+  RefreshCw,
+  Building2,
 } from 'lucide-react'
 import { SectionHeading } from './section-heading'
 import { StaggerGroup, StaggerItem } from './reveal'
@@ -18,42 +16,32 @@ const services = [
   {
     icon: Globe,
     title: 'Custom Websites',
-    desc: 'Fast, responsive, conversion-focused sites built from scratch for your brand.',
+    desc: 'Designed to convert visitors. Fast, mobile-first, built to rank on search.',
   },
   {
     icon: AppWindow,
     title: 'Web Applications',
-    desc: 'Robust, scalable web apps that handle real business logic and growth.',
+    desc: 'Complex workflows turned into clean, usable software built for your process.',
   },
   {
     icon: Bot,
     title: 'Business Automation',
-    desc: 'Automate repetitive work and free your team to focus on what matters.',
+    desc: 'Automated communication, data flows, and operations that run without you.',
+  },
+  {
+    icon: RefreshCw,
+    title: 'Website Revamps',
+    desc: 'We take your existing website and rebuild it into a growth channel.',
+  },
+  {
+    icon: Building2,
+    title: 'Business Management Systems',
+    desc: 'Multi-user software covering the full operational lifecycle of your business.',
   },
   {
     icon: Plug,
-    title: 'API Integrations',
-    desc: 'Connect payments, CRMs, and third-party tools into one smooth system.',
-  },
-  {
-    icon: LayoutTemplate,
-    title: 'Landing Pages',
-    desc: 'High-impact pages engineered to capture leads and drive action.',
-  },
-  {
-    icon: Gauge,
-    title: 'Admin Dashboards',
-    desc: 'Clear, powerful internal tools to manage and visualize your data.',
-  },
-  {
-    icon: ShieldCheck,
-    title: 'Production Support',
-    desc: 'Monitoring, maintenance, and reliable help long after launch.',
-  },
-  {
-    icon: MessagesSquare,
-    title: 'Technical Consultation',
-    desc: 'Expert guidance to make confident technology decisions.',
+    title: 'API & Integrations',
+    desc: 'Connect every tool you use. Fill the gaps with custom-built integrations.',
   },
 ]
 
@@ -65,11 +53,16 @@ export function Services() {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeading
           eyebrow="Services"
-          title="What We Build"
-          description="A full toolkit of digital solutions, engineered to grow with your business."
+          title={
+            <>
+              Services We Provide with{' '}
+              <span className="text-gradient">Real Execution</span>
+            </>
+          }
+          description="From idea to production, BittsTech helps businesses design, build, automate, and support reliable digital products."
         />
 
-        <StaggerGroup className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <StaggerGroup className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s) => (
             <StaggerItem key={s.title}>
               <ServiceCard service={s} />
