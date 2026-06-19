@@ -1,26 +1,28 @@
 'use client'
 
-import { ArrowRight, Building2, Plane } from 'lucide-react'
-import { StaggerGroup, StaggerItem } from './reveal'
+import Link from 'next/link'
+import { useRef } from 'react'
+import { ArrowLeft, ArrowRight, Building2, Plane } from 'lucide-react'
+import { workProjects } from '@/lib/work-projects'
 
-const cases = [
-  {
-    icon: Plane,
-    category: 'Travel & Tourism',
-    title: 'End-to-End Travel Agency Platform',
-    desc: 'Travel agencies were managing leads, bookings, and follow-ups manually across disconnected tools.',
-    tags: ['Next.js', 'TypeScript', 'PostgreSQL'],
-  },
-  {
-    icon: Building2,
-    category: 'Construction & Infrastructure',
-    title: 'Multi-Site Construction Management System',
-    desc: 'Construction businesses had no unified way to track materials, workforce, and finances across multiple sites.',
-    tags: ['Next.js', 'Node.js', 'PostgreSQL', 'Cloud Storage'],
-  },
-]
+const icons = {
+  'travel-suite': Plane,
+  'construction-suite': Building2,
+}
 
 export function Showcase() {
+  const sliderRef = useRef<HTMLDivElement>(null)
+
+  function slide(direction: 'left' | 'right') {
+    const slider = sliderRef.current
+    if (!slider) return
+
+    slider.scrollBy({
+      left: direction === 'right' ? 420 : -420,
+      behavior: 'smooth',
+    })
+  }
+
   return (
     <section id="showcase" className="relative overflow-hidden bg-navy py-20 text-background lg:py-24">
       <div className="pointer-events-none absolute inset-0 opacity-[0.07] [background-image:radial-gradient(white_1px,transparent_1px)] [background-size:26px_26px]" />
@@ -42,12 +44,43 @@ export function Showcase() {
           </p>
         </div>
 
-        <StaggerGroup className="mt-10 grid grid-cols-1 gap-5 lg:grid-cols-2" stagger={0.08}>
-          {cases.map((item) => {
-            const Icon = item.icon
+        <div className="mt-10 flex items-center justify-between gap-4">
+          <p className="text-sm text-background/60">
+            Slide through project work, then open the full case study.
+          </p>
+          <div className="flex gap-2">
+            <button
+              type="button"
+              aria-label="Previous work"
+              onClick={() => slide('left')}
+              className="flex size-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-background transition-colors hover:bg-white/10"
+            >
+              <ArrowLeft className="size-4" />
+            </button>
+            <button
+              type="button"
+              aria-label="Next work"
+              onClick={() => slide('right')}
+              className="flex size-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-background transition-colors hover:bg-white/10"
+            >
+              <ArrowRight className="size-4" />
+            </button>
+          </div>
+        </div>
+
+        <div
+          ref={sliderRef}
+          className="mt-5 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
+          {workProjects.map((item) => {
+            const Icon = icons[item.slug]
             return (
-              <StaggerItem key={item.title}>
-                <article className="group h-full rounded-2xl border border-white/10 bg-white/[0.055] p-6 shadow-[0_28px_70px_-50px_rgba(0,0,0,0.8)] backdrop-blur-xl transition-transform duration-500 hover:-translate-y-1.5">
+              <Link
+                key={item.slug}
+                href={`/work/${item.slug}`}
+                className="group block min-w-[86%] snap-start sm:min-w-[440px] lg:min-w-[520px]"
+              >
+                <article className="h-full rounded-2xl border border-white/10 bg-white/[0.055] p-6 shadow-[0_28px_70px_-50px_rgba(0,0,0,0.8)] backdrop-blur-xl transition-transform duration-500 hover:-translate-y-1.5">
                   <div className="flex items-start justify-between gap-4">
                     <span className="flex size-12 items-center justify-center rounded-xl bg-white/10 text-accent">
                       <Icon className="size-6" />
@@ -57,10 +90,10 @@ export function Showcase() {
                     </span>
                   </div>
                   <h3 className="mt-8 font-heading text-2xl font-semibold text-background">
-                    {item.title}
+                    {item.cardTitle}
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed text-background/70">
-                    {item.desc}
+                    {item.cardDescription}
                   </p>
                   <div className="mt-6 flex flex-wrap gap-2">
                     {item.tags.map((tag) => (
@@ -74,10 +107,10 @@ export function Showcase() {
                     <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
                   </span>
                 </article>
-              </StaggerItem>
+              </Link>
             )
           })}
-        </StaggerGroup>
+        </div>
       </div>
     </section>
   )
