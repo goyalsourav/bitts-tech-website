@@ -1,7 +1,5 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
-import { motion, useScroll, useSpring, useTransform } from 'framer-motion'
 import {
   GraduationCap,
   Plane,
@@ -12,6 +10,7 @@ import {
   Building2,
   UserRound,
 } from 'lucide-react'
+import { StaggerGroup, StaggerItem } from './reveal'
 
 const industries = [
   { icon: GraduationCap, title: 'Schools & Preschools', desc: 'Admissions, portals, and parent communication systems.' },
@@ -24,27 +23,11 @@ const industries = [
   { icon: UserRound, title: 'Personal Brands', desc: 'Standout portfolios and personal platforms.' },
 ]
 
-function useIsDesktop() {
-  const [isDesktop, setIsDesktop] = useState(false)
-
-  useEffect(() => {
-    const mq = window.matchMedia('(min-width: 1024px)')
-    const update = () => setIsDesktop(mq.matches)
-    update()
-    mq.addEventListener('change', update)
-    return () => mq.removeEventListener('change', update)
-  }, [])
-
-  return isDesktop
-}
-
 export function Industries() {
-  const isDesktop = useIsDesktop()
-
   return (
-    <section id="industries" className="relative overflow-hidden bg-secondary/35">
+    <section id="industries" className="relative overflow-hidden bg-secondary/35 py-28 lg:py-36">
       <div className="pointer-events-none absolute inset-0 fine-grid opacity-45 mask-soft" />
-      <div className="relative mx-auto max-w-7xl px-4 pt-28 sm:px-6 lg:pt-36">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
         <div className="mx-auto max-w-2xl text-center">
           <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary">
             <span className="size-1.5 rounded-full bg-accent" />
@@ -54,9 +37,15 @@ export function Industries() {
             Solutions for Every Growing Business
           </h2>
         </div>
-      </div>
 
-      {isDesktop ? <HorizontalScroll /> : <MobileCarousel />}
+        <StaggerGroup className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4" stagger={0.07}>
+          {industries.map((item) => (
+            <StaggerItem key={item.title} className="min-h-[230px]">
+              <Card item={item} />
+            </StaggerItem>
+          ))}
+        </StaggerGroup>
+      </div>
     </section>
   )
 }
@@ -78,50 +67,6 @@ function Card({ item }: { item: (typeof industries)[number] }) {
           {item.desc}
         </p>
       </div>
-    </div>
-  )
-}
-
-function HorizontalScroll() {
-  const ref = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start start', 'end end'],
-  })
-  const raw = useTransform(scrollYProgress, [0, 1], ['2%', '-72%'])
-  const x = useSpring(raw, { stiffness: 90, damping: 28, restDelta: 0.001 })
-
-  return (
-    <div ref={ref} className="relative mt-12 h-[300vh]">
-      <div className="sticky top-0 flex h-screen items-center overflow-hidden">
-        <motion.ul style={{ x }} className="flex gap-5 px-[8vw]">
-          {industries.map((item) => (
-            <li key={item.title} className="w-[360px] shrink-0">
-              <Card item={item} />
-            </li>
-          ))}
-        </motion.ul>
-      </div>
-    </div>
-  )
-}
-
-function MobileCarousel() {
-  return (
-    <div className="relative mt-10 pb-24">
-      <ul className="flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-4 [scrollbar-width:none] sm:px-6">
-        {industries.map((item) => (
-          <li
-            key={item.title}
-            className="w-[80%] shrink-0 snap-center sm:w-[45%]"
-          >
-            <Card item={item} />
-          </li>
-        ))}
-      </ul>
-      <p className="mt-2 text-center text-xs text-muted-foreground">
-        Swipe to explore
-      </p>
     </div>
   )
 }

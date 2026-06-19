@@ -1,7 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
-import { motion, useScroll, useSpring } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { SectionHeading } from './section-heading'
 import { Reveal } from './reveal'
 
@@ -16,13 +15,6 @@ const phases = [
 ]
 
 export function Process() {
-  const ref = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start center', 'end center'],
-  })
-  const scaleY = useSpring(scrollYProgress, { stiffness: 80, damping: 26 })
-
   return (
     <section id="process" className="relative overflow-hidden bg-background py-28 lg:py-36">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
@@ -33,13 +25,8 @@ export function Process() {
           description="A transparent path from first conversation to long-term partnership."
         />
 
-        <div ref={ref} className="relative mx-auto mt-16 max-w-4xl">
-          <div className="absolute left-[18px] top-2 h-[calc(100%-1rem)] w-px bg-border md:left-1/2">
-            <motion.div
-              style={{ scaleY }}
-              className="absolute inset-0 origin-top bg-gradient-to-b from-primary to-accent"
-            />
-          </div>
+        <div className="relative mx-auto mt-16 max-w-4xl">
+          <div className="absolute left-[18px] top-2 h-[calc(100%-1rem)] w-px bg-gradient-to-b from-primary via-accent to-border md:left-1/2" />
 
           <ol className="space-y-10">
             {phases.map((p, i) => {
