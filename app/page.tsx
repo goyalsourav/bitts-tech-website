@@ -1,7 +1,6 @@
 import { ScrollProgress } from '@/components/site/scroll-progress'
 import { Navbar } from '@/components/site/navbar'
 import { Hero } from '@/components/site/hero'
-import { FlowSection } from '@/components/site/flow-section'
 import { Services } from '@/components/site/services'
 import { Showcase } from '@/components/site/showcase'
 import { Why } from '@/components/site/why'
@@ -16,7 +15,6 @@ export default function Page() {
       <ScrollProgress />
       <Navbar />
       <Hero />
-      <FlowSection />
       <Services />
       <Showcase />
       <Why />

@@ -70,11 +70,13 @@ export function Process() {
           description="A transparent path from first conversation to long-term partnership."
         />
 
-        <StaggerGroup className="relative mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4" stagger={0.06}>
+        <StaggerGroup className="relative mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-6" stagger={0.06}>
           {phases.map((phase, index) => (
             <StaggerItem
               key={phase.title}
-              className={index === phases.length - 1 ? 'sm:col-span-2 lg:col-span-2' : ''}
+              className={`sm:col-span-1 lg:col-span-2 ${
+                index === 4 ? 'lg:col-start-2' : ''
+              }`}
             >
               <ProcessCard phase={phase} index={index} />
             </StaggerItem>
@@ -98,7 +100,7 @@ function ProcessCard({
     <motion.article
       whileHover={{ y: -6 }}
       transition={{ type: 'spring', stiffness: 260, damping: 22 }}
-      className="premium-surface group relative flex h-full min-h-[220px] flex-col overflow-hidden rounded-2xl p-6"
+      className="premium-surface group relative flex h-full min-h-[230px] flex-col overflow-hidden rounded-2xl p-6"
     >
       <div className="flex items-start justify-between gap-4">
         <span className="flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary/10 to-accent/15 text-primary transition-colors duration-500 group-hover:from-primary group-hover:to-accent group-hover:text-primary-foreground">
@@ -109,7 +111,7 @@ function ProcessCard({
         </span>
       </div>
 
-      <div className="mt-8">
+      <div className="mt-8 flex flex-1 flex-col">
         <span className="text-xs font-bold uppercase tracking-[0.18em] text-accent">
           {phase.label}
         </span>
