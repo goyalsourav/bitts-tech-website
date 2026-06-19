@@ -31,14 +31,14 @@ export function Hero() {
       id="top"
       ref={ref}
       onMouseMove={onMouseMove}
-      className="relative overflow-hidden bg-dotgrid pb-16 pt-28 sm:pt-32 lg:flex lg:min-h-screen lg:items-center lg:pb-20"
+      className="relative overflow-hidden bg-dotgrid pt-20 sm:pt-24"
     >
       <div className="pointer-events-none absolute -left-24 top-10 size-[420px] rounded-full bg-primary/10 blur-3xl" />
       <div className="pointer-events-none absolute -right-20 top-40 size-[460px] rounded-full bg-accent/15 blur-3xl" />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-background to-transparent" />
       <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-36 bg-gradient-to-t from-background to-transparent" />
 
-      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-10 px-4 sm:px-6 md:grid-cols-2 lg:gap-14">
+      <div className="mx-auto grid min-h-[calc(100svh-5rem)] w-full max-w-7xl grid-cols-1 items-center gap-10 px-4 pb-16 sm:px-6 md:grid-cols-2 lg:gap-14">
         <motion.div
           className="relative z-10 min-w-0"
           initial={{ opacity: 0, y: 24 }}
@@ -124,14 +124,12 @@ export function Hero() {
         </motion.div>
 
         <motion.div
-          className="relative z-0 mx-auto mt-8 w-full max-w-[390px] md:mt-24 md:max-w-[460px] lg:mt-28 lg:max-w-[500px]"
+          className="relative z-0 mx-auto mt-8 w-full max-w-[390px] md:mt-0 md:max-w-[460px] lg:max-w-[500px]"
           initial={{ opacity: 0, scale: 0.96, y: 24 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.82, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="hero-visual-offset">
-            <HeroVisual parallaxX={sx} parallaxY={sy} />
-          </div>
+          <HeroVisual parallaxX={sx} parallaxY={sy} />
         </motion.div>
       </div>
     </section>
