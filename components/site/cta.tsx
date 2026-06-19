@@ -1,13 +1,17 @@
 'use client'
 
 import type { FormEvent, InvalidEvent } from 'react'
+import { useState } from 'react'
 import { Mail, Phone, Send } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 const gmailComposeBase = 'https://mail.google.com/mail/?view=cm&fs=1'
 
 export function CTA() {
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
+  const [message, setMessage] = useState('')
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
     const form = event.currentTarget
@@ -18,18 +22,29 @@ export function CTA() {
     const mobile = String(data.get('mobile') ?? '')
     const email = String(data.get('email') ?? '')
     const query = String(data.get('query') ?? '')
-    const subject = `New project request from ${name}`
-    const body = [
-      `Name: ${name}`,
-      `Mobile Number: ${mobile}`,
-      `Email Address: ${email}`,
-      '',
-      'Business Query:',
-      query,
-    ].join('\n')
 
-    const composeUrl = `${gmailComposeBase}&to=contact@bittstech.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-    window.open(composeUrl, '_blank', 'noopener,noreferrer')
+    setStatus('sending')
+    setMessage('')
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, mobile, email, query }),
+      })
+      const result = await response.json()
+
+      if (!response.ok) {
+        throw new Error(result.error ?? 'Failed to send your request.')
+      }
+
+      form.reset()
+      setStatus('sent')
+      setMessage('Your request has been sent. We will get back to you shortly.')
+    } catch (error) {
+      setStatus('error')
+      setMessage(error instanceof Error ? error.message : 'Failed to send your request.')
+    }
   }
 
   function requireDetails(event: InvalidEvent<HTMLInputElement | HTMLTextAreaElement>) {
@@ -128,11 +143,21 @@ export function CTA() {
           />
           <button
             type="submit"
+            disabled={status === 'sending'}
             className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-accent px-6 text-sm font-semibold text-navy shadow-[0_10px_30px_rgba(0,174,239,0.28)] transition-transform hover:-translate-y-0.5"
           >
-            Send My Request
+            {status === 'sending' ? 'Sending...' : 'Send My Request'}
             <Send className="size-4" />
           </button>
+          {message && (
+            <p
+              className={`text-sm ${
+                status === 'sent' ? 'text-accent' : 'text-red-200'
+              }`}
+            >
+              {message}
+            </p>
+          )}
         </form>
       </motion.div>
     </section>
