@@ -1,23 +1,68 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import {
+  ClipboardCheck,
+  Code2,
+  Compass,
+  LifeBuoy,
+  Paintbrush,
+  Rocket,
+  Search,
+} from 'lucide-react'
 import { SectionHeading } from './section-heading'
-import { Reveal } from './reveal'
+import { StaggerGroup, StaggerItem } from './reveal'
 
 const phases = [
-  { title: 'Discovery Call', desc: 'We learn your goals, challenges, and vision.' },
-  { title: 'Requirement Planning', desc: 'We define scope, features, and a clear roadmap.' },
-  { title: 'UI/UX Design', desc: 'We craft intuitive, on-brand interfaces.' },
-  { title: 'Development', desc: 'We build clean, scalable, well-tested code.' },
-  { title: 'Testing', desc: 'We validate quality across every device.' },
-  { title: 'Launch', desc: 'We deploy smoothly and go live with confidence.' },
-  { title: 'Maintenance & Support', desc: 'We keep things running and evolving.' },
+  {
+    icon: Search,
+    label: 'Listen',
+    title: 'Discovery Call',
+    desc: 'We understand the business, users, blockers, and the result you want.',
+  },
+  {
+    icon: Compass,
+    label: 'Map',
+    title: 'Requirement Planning',
+    desc: 'Scope, features, priorities, and technical direction are made clear.',
+  },
+  {
+    icon: Paintbrush,
+    label: 'Shape',
+    title: 'UI/UX Design',
+    desc: 'We turn the plan into clean screens and a natural user journey.',
+  },
+  {
+    icon: Code2,
+    label: 'Build',
+    title: 'Development',
+    desc: 'The product is engineered with scalable, maintainable code.',
+  },
+  {
+    icon: ClipboardCheck,
+    label: 'Verify',
+    title: 'Testing',
+    desc: 'We check behavior, performance, responsiveness, and polish.',
+  },
+  {
+    icon: Rocket,
+    label: 'Ship',
+    title: 'Launch',
+    desc: 'Deployment, domain setup, and go-live happen with confidence.',
+  },
+  {
+    icon: LifeBuoy,
+    label: 'Care',
+    title: 'Maintenance & Support',
+    desc: 'We keep improving, monitoring, and supporting after launch.',
+  },
 ]
 
 export function Process() {
   return (
     <section id="process" className="relative overflow-hidden bg-background py-28 lg:py-36">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-dotgrid opacity-40" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeading
           eyebrow="Process"
@@ -25,55 +70,56 @@ export function Process() {
           description="A transparent path from first conversation to long-term partnership."
         />
 
-        <div className="relative mx-auto mt-16 max-w-4xl">
-          <div className="absolute left-[18px] top-2 h-[calc(100%-1rem)] w-px bg-gradient-to-b from-primary via-accent to-border md:left-1/2" />
-
-          <ol className="space-y-10">
-            {phases.map((p, i) => {
-              const left = i % 2 === 0
-              return (
-                <li
-                  key={p.title}
-                  className={`relative pl-12 md:w-1/2 md:pl-0 ${
-                    left ? 'md:pr-12 md:text-right' : 'md:ml-auto md:pl-12'
-                  }`}
-                >
-                  {/* node */}
-                  <span
-                    className={`absolute left-[18px] top-1.5 z-10 flex size-5 -translate-x-1/2 items-center justify-center md:top-2 ${
-                      left
-                        ? 'md:left-auto md:right-0 md:translate-x-1/2'
-                        : 'md:left-0 md:-translate-x-1/2'
-                    }`}
-                  >
-                    <motion.span
-                      initial={{ scale: 0 }}
-                      whileInView={{ scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ type: 'spring', stiffness: 300, damping: 18 }}
-                      className="size-4 rounded-full border-2 border-primary bg-background shadow-[0_0_0_4px_oklch(0.55_0.214_258_/_0.12)]"
-                    />
-                  </span>
-
-                  <Reveal direction={left ? 'left' : 'right'}>
-                    <div className="premium-surface rounded-2xl p-5">
-                      <span className="text-xs font-bold text-accent">
-                        Step {String(i + 1).padStart(2, '0')}
-                      </span>
-                      <h3 className="mt-1 font-heading text-lg font-semibold text-foreground">
-                        {p.title}
-                      </h3>
-                      <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                        {p.desc}
-                      </p>
-                    </div>
-                  </Reveal>
-                </li>
-              )
-            })}
-          </ol>
-        </div>
+        <StaggerGroup className="relative mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4" stagger={0.06}>
+          {phases.map((phase, index) => (
+            <StaggerItem
+              key={phase.title}
+              className={index === phases.length - 1 ? 'sm:col-span-2 lg:col-span-2' : ''}
+            >
+              <ProcessCard phase={phase} index={index} />
+            </StaggerItem>
+          ))}
+        </StaggerGroup>
       </div>
     </section>
+  )
+}
+
+function ProcessCard({
+  phase,
+  index,
+}: {
+  phase: (typeof phases)[number]
+  index: number
+}) {
+  const Icon = phase.icon
+
+  return (
+    <motion.article
+      whileHover={{ y: -6 }}
+      transition={{ type: 'spring', stiffness: 260, damping: 22 }}
+      className="premium-surface group relative flex h-full min-h-[220px] flex-col overflow-hidden rounded-2xl p-6"
+    >
+      <div className="flex items-start justify-between gap-4">
+        <span className="flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary/10 to-accent/15 text-primary transition-colors duration-500 group-hover:from-primary group-hover:to-accent group-hover:text-primary-foreground">
+          <Icon className="size-5" />
+        </span>
+        <span className="font-mono text-sm font-semibold text-primary/45">
+          {String(index + 1).padStart(2, '0')}
+        </span>
+      </div>
+
+      <div className="mt-8">
+        <span className="text-xs font-bold uppercase tracking-[0.18em] text-accent">
+          {phase.label}
+        </span>
+        <h3 className="mt-2 font-heading text-lg font-semibold text-foreground">
+          {phase.title}
+        </h3>
+        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+          {phase.desc}
+        </p>
+      </div>
+    </motion.article>
   )
 }
