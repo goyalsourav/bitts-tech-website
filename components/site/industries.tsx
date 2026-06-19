@@ -67,7 +67,7 @@ const industries = [
 
 export function Industries() {
   return (
-    <section id="industries" className="relative overflow-hidden bg-secondary/35 py-28 lg:py-36">
+    <section id="industries" className="relative overflow-hidden bg-secondary/35 py-20 lg:py-24">
       <div className="pointer-events-none absolute inset-0 fine-grid opacity-45 mask-soft" />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
         <div className="mx-auto max-w-2xl text-center">
@@ -78,14 +78,10 @@ export function Industries() {
           <h2 className="mt-5 font-heading text-3xl font-bold tracking-tight text-foreground text-balance sm:text-4xl lg:text-[2.85rem] lg:leading-[1.06]">
             We Build for Any Business
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Every industry has processes, workflows, and customers. We build
-            systems around those realities.
-          </p>
         </div>
 
         <motion.div
-          className="mt-16 grid grid-cols-1 gap-x-12 gap-y-8 sm:grid-cols-2 lg:grid-cols-3"
+          className="mt-10 grid grid-cols-1 gap-x-12 gap-y-8 sm:grid-cols-2 lg:grid-cols-3"
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}

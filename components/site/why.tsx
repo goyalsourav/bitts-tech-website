@@ -29,7 +29,7 @@ const reasons = [
 
 export function Why() {
   return (
-    <section className="relative overflow-hidden bg-background py-28 lg:py-36">
+    <section className="relative overflow-hidden bg-background py-20 lg:py-24">
       <div className="pointer-events-none absolute inset-0 bg-dotgrid opacity-50" />
       <ArcLines className="pointer-events-none absolute -top-10 left-0 h-72 w-full text-primary/40" />
 
@@ -40,7 +40,7 @@ export function Why() {
           description="Support, ownership, and a business-first process from first call to go-live."
         />
 
-        <StaggerGroup className="mt-16 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <StaggerGroup className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {reasons.map((r, index) => {
             const Icon = r.icon
             return (

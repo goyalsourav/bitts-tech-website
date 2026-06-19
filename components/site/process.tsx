@@ -46,7 +46,7 @@ const phases = [
 
 export function Process() {
   return (
-    <section id="process" className="relative overflow-hidden bg-background py-28 lg:py-36">
+    <section id="process" className="relative overflow-hidden bg-background py-20 lg:py-24">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
       <div className="pointer-events-none absolute inset-0 bg-dotgrid opacity-40" />
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
@@ -56,7 +56,7 @@ export function Process() {
           description="Clear scope, clean delivery, and support that stays after launch."
         />
 
-        <StaggerGroup className="relative mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-10" stagger={0.06}>
+        <StaggerGroup className="relative mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-10" stagger={0.06}>
           {phases.map((phase, index) => (
             <StaggerItem
               key={phase.title}

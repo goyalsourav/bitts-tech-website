@@ -24,7 +24,7 @@ const notes = [
 
 export function Notes() {
   return (
-    <section className="relative overflow-hidden bg-background py-28 lg:py-36">
+    <section className="relative overflow-hidden bg-background py-20 lg:py-24">
       <div className="pointer-events-none absolute inset-0 bg-dotgrid opacity-45" />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
@@ -40,7 +40,7 @@ export function Notes() {
           </a>
         </div>
 
-        <StaggerGroup className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-3" stagger={0.08}>
+        <StaggerGroup className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-3" stagger={0.08}>
           {notes.map((note) => (
             <StaggerItem key={note.title}>
               <article className="premium-surface group h-full rounded-2xl p-6 transition-transform duration-500 hover:-translate-y-1.5">

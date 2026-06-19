@@ -47,7 +47,7 @@ const services = [
 
 export function Services() {
   return (
-    <section id="services" className="relative overflow-hidden bg-secondary/35 py-28 lg:py-36">
+    <section id="services" className="relative overflow-hidden bg-secondary/35 py-20 lg:py-24">
       <div className="pointer-events-none absolute inset-0 fine-grid opacity-50 mask-soft" />
       <div className="pointer-events-none absolute left-1/2 top-10 h-px w-[78vw] -translate-x-1/2 bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
@@ -62,7 +62,7 @@ export function Services() {
           description="From idea to production, BittsTech helps businesses design, build, automate, and support reliable digital products."
         />
 
-        <StaggerGroup className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <StaggerGroup className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s) => (
             <StaggerItem key={s.title}>
               <ServiceCard service={s} />

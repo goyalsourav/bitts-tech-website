@@ -37,7 +37,7 @@ const faqs = [
 
 export function FAQ() {
   return (
-    <section id="faqs" className="relative overflow-hidden bg-secondary/35 py-28 lg:py-36">
+    <section id="faqs" className="relative overflow-hidden bg-secondary/35 py-20 lg:py-24">
       <div className="pointer-events-none absolute inset-0 fine-grid opacity-45 mask-soft" />
       <div className="relative mx-auto max-w-5xl px-4 sm:px-6">
         <SectionHeading
@@ -46,7 +46,7 @@ export function FAQ() {
           description="Clear answers before we start building together."
         />
 
-        <div className="mt-14 space-y-3">
+        <div className="mt-10 space-y-3">
           {faqs.map((item) => (
             <details
               key={item.q}

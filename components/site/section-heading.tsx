@@ -5,7 +5,7 @@ export function SectionHeading({
   eyebrow,
   title,
   description,
-  align = 'center',
+  align = 'left',
   className,
 }: {
   eyebrow?: string
@@ -19,7 +19,7 @@ export function SectionHeading({
   return (
     <div
       className={`flex flex-col ${alignment} ${
-        align === 'center' ? 'mx-auto max-w-2xl' : ''
+        align === 'center' ? 'mx-auto max-w-2xl' : 'max-w-3xl'
       } ${className ?? ''}`}
     >
       {eyebrow && (

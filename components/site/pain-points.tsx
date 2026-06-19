@@ -46,7 +46,7 @@ const points = [
 
 export function PainPoints() {
   return (
-    <section className="relative overflow-hidden bg-background py-28 lg:py-36">
+    <section className="relative overflow-hidden bg-background py-20 lg:py-24">
       <div className="pointer-events-none absolute inset-0 bg-dotgrid opacity-45" />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeading
@@ -60,7 +60,7 @@ export function PainPoints() {
           description="Most businesses outgrow their tools long before they realize it. If any of these feel familiar, we should talk."
         />
 
-        <StaggerGroup className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3" stagger={0.07}>
+        <StaggerGroup className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3" stagger={0.07}>
           {points.map((point) => {
             const Icon = point.icon
             return (

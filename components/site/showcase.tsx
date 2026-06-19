@@ -22,13 +22,13 @@ const cases = [
 
 export function Showcase() {
   return (
-    <section id="showcase" className="relative overflow-hidden bg-navy py-28 text-background lg:py-36">
+    <section id="showcase" className="relative overflow-hidden bg-navy py-20 text-background lg:py-24">
       <div className="pointer-events-none absolute inset-0 opacity-[0.07] [background-image:radial-gradient(white_1px,transparent_1px)] [background-size:26px_26px]" />
       <div className="pointer-events-none absolute -left-20 top-1/3 size-[420px] rounded-full bg-primary/30 blur-3xl" />
       <div className="pointer-events-none absolute -right-20 bottom-0 size-[420px] rounded-full bg-accent/25 blur-3xl" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="mx-auto max-w-2xl text-center">
+        <div className="max-w-3xl text-left">
           <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-accent">
             <span className="size-1.5 rounded-full bg-accent" />
             What we have built
@@ -42,7 +42,7 @@ export function Showcase() {
           </p>
         </div>
 
-        <StaggerGroup className="mt-16 grid grid-cols-1 gap-5 lg:grid-cols-2" stagger={0.08}>
+        <StaggerGroup className="mt-10 grid grid-cols-1 gap-5 lg:grid-cols-2" stagger={0.08}>
           {cases.map((item) => {
             const Icon = item.icon
             return (
