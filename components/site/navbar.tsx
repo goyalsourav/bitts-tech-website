@@ -37,7 +37,10 @@ export function Navbar() {
             : 'border border-transparent bg-transparent'
         }`}
       >
-        <a href="#top" className="flex items-center gap-2">
+        <a
+          href="#top"
+          className="flex items-center gap-2 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/45 focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+        >
           <Logo />
         </a>
 
@@ -46,7 +49,7 @@ export function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className="group relative text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              className="group relative rounded-md text-sm font-medium text-muted-foreground transition-colors hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/35 focus-visible:ring-offset-4 focus-visible:ring-offset-background"
             >
               {l.label}
               <span className="absolute -bottom-1 left-0 h-px w-0 bg-primary transition-all duration-300 group-hover:w-full" />

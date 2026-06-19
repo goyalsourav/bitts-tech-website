@@ -3,34 +3,14 @@
 import { useRef } from 'react'
 import {
   motion,
-  useScroll,
-  useTransform,
   useMotionValue,
   useSpring,
 } from 'framer-motion'
 import { ArrowRight, Sparkles, ShieldCheck, TimerReset, Workflow } from 'lucide-react'
 import { HeroVisual } from './hero-visual'
 
-const headline = ['Building Digital', 'Products That Move', 'Businesses Forward']
-
 export function Hero() {
   const ref = useRef<HTMLElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start start', 'end start'],
-  })
-
-  // Hero content drifts up + fades as you scroll into the next section
-  const contentY = useTransform(scrollYProgress, [0, 1], [0, -120])
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0])
-  const visualScale = useSpring(useTransform(scrollYProgress, [0, 1], [1, 1.08]), {
-    stiffness: 80,
-    damping: 28,
-  })
-  const visualY = useSpring(useTransform(scrollYProgress, [0, 1], [0, 70]), {
-    stiffness: 80,
-    damping: 28,
-  })
 
   // Mouse parallax for the visual
   const mx = useMotionValue(0)
@@ -51,25 +31,26 @@ export function Hero() {
       id="top"
       ref={ref}
       onMouseMove={onMouseMove}
-      className="relative overflow-hidden bg-dotgrid pb-24 pt-32 sm:pt-40 lg:min-h-screen lg:pb-32"
+      className="relative overflow-hidden bg-dotgrid pb-16 pt-28 sm:pt-32 lg:flex lg:min-h-screen lg:items-center lg:pb-20"
     >
       <div className="pointer-events-none absolute -left-24 top-10 size-[420px] rounded-full bg-primary/10 blur-3xl" />
       <div className="pointer-events-none absolute -right-20 top-40 size-[460px] rounded-full bg-accent/15 blur-3xl" />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-background to-transparent" />
       <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-36 bg-gradient-to-t from-background to-transparent" />
 
-      <div className="mx-auto grid w-full max-w-[100vw] grid-cols-1 items-center gap-14 overflow-hidden px-4 sm:max-w-7xl sm:px-6 lg:grid-cols-[0.94fr_1.06fr] lg:gap-10 lg:overflow-visible">
+      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-10 px-4 sm:px-6 md:grid-cols-2 lg:gap-14">
         <motion.div
-          style={{ y: contentY, opacity: contentOpacity }}
           className="relative z-10 min-w-0"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
         >
           <motion.div
             initial={false}
             whileInView={{ y: [8, 0] }}
             viewport={{ once: true }}
             transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-            className="inline-flex items-center justify-center gap-2 rounded-full border border-border/80 bg-card/75 px-4 py-1.5 text-center text-xs font-medium text-muted-foreground shadow-[0_14px_35px_-26px_rgba(30,50,110,0.7)] backdrop-blur-xl"
-            style={{ maxWidth: 'min(20rem, calc(100vw - 3rem))' }}
+            className="inline-flex max-w-full items-center justify-center gap-2 rounded-full border border-border/80 bg-card/75 px-4 py-1.5 text-center text-xs font-medium text-muted-foreground shadow-[0_14px_35px_-26px_rgba(30,50,110,0.7)] backdrop-blur-xl"
           >
             <Sparkles className="size-3.5 text-accent" />
             <span className="truncate sm:whitespace-normal">
@@ -77,31 +58,9 @@ export function Hero() {
             </span>
           </motion.div>
 
-          <h1
-            className="mt-7 font-heading text-4xl font-bold leading-[1.08] tracking-tight text-foreground text-balance sm:max-w-3xl sm:text-5xl lg:text-7xl lg:leading-[1.02]"
-            style={{ maxWidth: 'min(20.5rem, calc(100vw - 3rem))' }}
-          >
-            {headline.map((line, i) => (
-              <span key={line} className="block overflow-visible pb-1">
-                <motion.span
-                  className="block"
-                  initial={false}
-                  whileInView={{ y: [18, 0] }}
-                  viewport={{ once: true }}
-                  transition={{
-                    duration: 0.82,
-                    delay: 0.15 + i * 0.12,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                >
-                  {i === 2 ? (
-                    <span className="text-gradient">{line}</span>
-                  ) : (
-                    line
-                  )}
-                </motion.span>
-              </span>
-            ))}
+          <h1 className="mt-7 max-w-3xl font-heading text-4xl font-bold leading-[1.05] tracking-tight text-foreground text-balance sm:text-5xl lg:text-6xl xl:text-[4.25rem]">
+            Build digital products that move{' '}
+            <span className="text-gradient">businesses forward</span>
           </h1>
 
           <motion.p
@@ -109,8 +68,7 @@ export function Hero() {
             whileInView={{ y: [10, 0] }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.55 }}
-            className="mt-6 text-pretty text-base leading-relaxed text-muted-foreground sm:max-w-xl sm:text-lg"
-            style={{ maxWidth: 'min(18.75rem, calc(100vw - 3rem))' }}
+            className="mt-6 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg"
           >
             Bitts Tech creates custom websites, web applications, automation
             systems, integrations, and reliable technical solutions for growing
@@ -122,8 +80,7 @@ export function Hero() {
             whileInView={{ y: [10, 0] }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.7 }}
-            className="mt-8 flex flex-col gap-3 sm:max-w-none sm:flex-row"
-            style={{ maxWidth: 'min(19rem, calc(100vw - 3rem))' }}
+            className="mt-8 flex flex-col gap-3 sm:flex-row"
           >
             <a
               href="#contact"
@@ -145,8 +102,7 @@ export function Hero() {
             whileInView={{ y: [8, 0] }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.9 }}
-            className="mt-10 grid grid-cols-1 gap-3 text-sm text-muted-foreground sm:max-w-2xl sm:grid-cols-3"
-            style={{ maxWidth: 'min(19rem, calc(100vw - 3rem))' }}
+            className="mt-10 flex max-w-2xl flex-wrap gap-3 text-sm text-muted-foreground"
           >
             {[
               { icon: Workflow, label: '100% custom builds' },
@@ -168,8 +124,11 @@ export function Hero() {
         </motion.div>
 
         <motion.div
-          style={{ scale: visualScale, y: visualY }}
-          className="relative z-0 lg:pl-4"
+          className="relative z-0 mx-auto w-full max-w-[390px] md:max-w-[440px] lg:max-w-[480px]"
+          style={{ marginTop: 'clamp(2.5rem, 9vw, 11rem)' }}
+          initial={{ opacity: 0, scale: 0.96, y: 24 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.82, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
         >
           <HeroVisual parallaxX={sx} parallaxY={sy} />
         </motion.div>

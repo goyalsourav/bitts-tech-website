@@ -65,7 +65,7 @@ export function HeroVisual({
 }) {
   return (
     <div
-      className="relative mx-auto aspect-square w-full max-w-[360px] sm:max-w-[520px] lg:max-w-[600px]"
+      className="relative mx-auto aspect-square w-full max-w-[320px] sm:max-w-[440px] lg:max-w-[500px]"
       style={{ perspective: '1400px' }}
     >
       <motion.div
@@ -111,8 +111,8 @@ export function HeroVisual({
         px={parallaxX}
         py={parallaxY}
         delay={0.1}
-        className="absolute left-1/2 top-1/2 w-[78%] -translate-x-1/2 -translate-y-1/2"
-        range={10}
+        className="absolute left-1/2 top-[48%] w-[72%] -translate-x-1/2 -translate-y-1/2"
+        range={7}
       >
         <div
           className="premium-surface overflow-hidden rounded-[1.7rem]"
@@ -176,7 +176,8 @@ export function HeroVisual({
         px={parallaxX}
         py={parallaxY}
         delay={0.25}
-        className="absolute -left-1 top-8 w-[49%] sm:-left-6"
+        className="absolute left-0 top-12 hidden w-[42%] sm:block"
+        range={8}
       >
         <div className="overflow-hidden rounded-2xl border border-white/10 bg-navy text-[10px] leading-relaxed shadow-[0_30px_70px_-35px_rgba(20,30,70,0.75)] sm:text-xs">
           <div className="flex items-center gap-2 border-b border-white/10 px-3 py-2 text-white/70">
@@ -213,8 +214,8 @@ export function HeroVisual({
         px={parallaxX}
         py={parallaxY}
         delay={0.5}
-        range={18}
-        className="absolute -right-1 bottom-12 w-[44%] sm:-right-7"
+        range={10}
+        className="absolute right-0 bottom-14 w-[38%]"
       >
         <div className="rounded-2xl border border-border/80 bg-card/88 p-4 shadow-[0_30px_60px_-34px_rgba(30,50,110,0.7)] backdrop-blur-xl">
           <div className="flex items-center justify-between">
@@ -242,7 +243,8 @@ export function HeroVisual({
         px={parallaxX}
         py={parallaxY}
         delay={0.2}
-        className="absolute right-4 top-2 sm:right-2"
+        range={7}
+        className="absolute right-5 top-8"
       >
         <div className="flex items-center gap-2 rounded-full border border-border/80 bg-card/85 px-3 py-2 text-xs font-medium shadow-[0_18px_35px_-24px_rgba(30,50,110,0.7)] backdrop-blur-xl">
           <Cloud className="size-4 text-accent" /> API Connected
@@ -255,7 +257,8 @@ export function HeroVisual({
         px={parallaxX}
         py={parallaxY}
         delay={0.7}
-        className="absolute bottom-4 left-4 sm:left-8"
+        range={7}
+        className="absolute bottom-10 left-6 sm:left-8"
       >
         <div className="flex items-center gap-2 rounded-full border border-border/80 bg-card/85 px-3 py-2 text-xs font-medium shadow-[0_18px_35px_-24px_rgba(30,50,110,0.7)] backdrop-blur-xl">
           <span className="relative flex size-2">
