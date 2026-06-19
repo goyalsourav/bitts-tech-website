@@ -9,7 +9,14 @@ import {
 import { ArrowRight, Sparkles, ShieldCheck, TimerReset, Workflow } from 'lucide-react'
 import { HeroVisual } from './hero-visual'
 
-const audiences = ['Startups', 'SME Teams', 'Agencies', 'Product Teams', 'Founders', 'Operations']
+const futureBrands = [
+  'BittsTech Partners',
+  'Launch Teams',
+  'Growth Operators',
+  'Digital Agencies',
+  'Product Studios',
+  'Service Businesses',
+]
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null)
@@ -123,7 +130,6 @@ export function Hero() {
               )
             })}
           </motion.div>
-          <TrustedFlow />
         </motion.div>
 
         <motion.div
@@ -135,38 +141,36 @@ export function Hero() {
           <HeroVisual parallaxX={sx} parallaxY={sy} />
         </motion.div>
       </div>
+
+      <TrustedFlow />
     </section>
   )
 }
 
 function TrustedFlow() {
-  const items = ['Trusted by founders & business teams', ...audiences]
-  const flow = [...items, ...items]
+  const flow = [...futureBrands, ...futureBrands, ...futureBrands]
 
   return (
-    <div className="mt-8 max-w-2xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
-      <motion.div
-        className="flex w-max items-center gap-2"
-        animate={{ x: ['0%', '-50%'] }}
-        transition={{ duration: 18, ease: 'linear', repeat: Infinity }}
-      >
-        {flow.map((item, index) => {
-          const isHeadline = item === items[0]
-
-          return (
+    <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-14 sm:px-6">
+      <p className="text-center text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+        Trusted by founders & business teams
+      </p>
+      <div className="mt-5 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+        <motion.div
+          className="flex w-max items-center gap-3"
+          animate={{ x: ['0%', '-33.333%'] }}
+          transition={{ duration: 22, ease: 'linear', repeat: Infinity }}
+        >
+          {flow.map((brand, index) => (
             <span
-              key={`${item}-${index}`}
-              className={
-                isHeadline
-                  ? 'mr-2 whitespace-nowrap text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground'
-                  : 'whitespace-nowrap rounded-full border border-border/70 bg-card/60 px-3 py-1.5 text-xs font-medium text-muted-foreground backdrop-blur'
-              }
+              key={`${brand}-${index}`}
+              className="whitespace-nowrap rounded-full border border-border/70 bg-card/65 px-5 py-2 text-sm font-medium text-muted-foreground shadow-[0_12px_30px_-26px_rgba(30,50,110,0.7)] backdrop-blur"
             >
-              {item}
+              {brand}
             </span>
-          )
-        })}
-      </motion.div>
+          ))}
+        </motion.div>
+      </div>
     </div>
   )
 }
