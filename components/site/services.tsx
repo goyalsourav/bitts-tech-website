@@ -91,7 +91,6 @@ function ServiceCard({ service }: { service: (typeof services)[number] }) {
     >
       <span className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/70 via-accent/60 to-transparent opacity-0 blur-sm transition-opacity duration-500 group-hover:opacity-100" />
       <div className="premium-surface relative flex h-full min-h-[230px] flex-col overflow-hidden rounded-2xl p-6 transition-shadow duration-500 group-hover:shadow-[0_30px_70px_-40px_rgba(40,80,200,0.65)]">
-        <span className="pointer-events-none absolute right-4 top-4 h-20 w-20 rounded-full border border-primary/10" />
         <span className="flex size-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary/10 to-accent/15 text-primary transition-colors duration-500 group-hover:from-primary group-hover:to-accent group-hover:text-primary-foreground">
           <Icon className="size-6" />
         </span>
@@ -101,9 +100,6 @@ function ServiceCard({ service }: { service: (typeof services)[number] }) {
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
           {service.desc}
         </p>
-        <span className="mt-auto pt-6 text-xs font-semibold uppercase tracking-[0.18em] text-primary/65">
-          Bitts Tech
-        </span>
       </div>
     </motion.div>
   )
