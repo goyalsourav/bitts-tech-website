@@ -164,6 +164,21 @@
   .mask-soft {
     mask-image: linear-gradient(to bottom, transparent, black 16%, black 84%, transparent);
   }
+  .hero-visual-offset {
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-visual-offset {
+    transform: translateY(4rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-visual-offset {
+    transform: translateY(4.75rem);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -124,13 +124,14 @@ export function Hero() {
         </motion.div>
 
         <motion.div
-          className="relative z-0 mx-auto w-full max-w-[390px] md:max-w-[440px] lg:max-w-[480px]"
-          style={{ marginTop: 'clamp(2.5rem, 9vw, 11rem)' }}
+          className="relative z-0 mx-auto mt-8 w-full max-w-[390px] md:mt-24 md:max-w-[460px] lg:mt-28 lg:max-w-[500px]"
           initial={{ opacity: 0, scale: 0.96, y: 24 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.82, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
         >
-          <HeroVisual parallaxX={sx} parallaxY={sy} />
+          <div className="hero-visual-offset">
+            <HeroVisual parallaxX={sx} parallaxY={sy} />
+          </div>
         </motion.div>
       </div>
     </section>
