@@ -34,7 +34,7 @@ const columns = [
 const socials = [
   { icon: InstagramIcon, label: 'Instagram', href: 'https://www.instagram.com/bittstechinfo/' },
   { icon: LinkedinIcon, label: 'LinkedIn', href: 'https://www.linkedin.com/company/bittstech' },
-  { icon: Mail, label: 'Email', href: 'mailto:contact@bittstech.com' },
+  { icon: Mail, label: 'Email', href: 'https://mail.google.com/mail/?view=cm&fs=1&to=contact@bittstech.com' },
   { icon: WhatsappIcon, label: 'WhatsApp', href: 'https://wa.me/917358550765' },
 ]
 

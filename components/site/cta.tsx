@@ -1,9 +1,45 @@
 'use client'
 
+import type { FormEvent, InvalidEvent } from 'react'
 import { Mail, Phone, Send } from 'lucide-react'
 import { motion } from 'framer-motion'
 
+const gmailComposeBase = 'https://mail.google.com/mail/?view=cm&fs=1'
+
 export function CTA() {
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+
+    const form = event.currentTarget
+    if (!form.reportValidity()) return
+
+    const data = new FormData(form)
+    const name = String(data.get('name') ?? '')
+    const mobile = String(data.get('mobile') ?? '')
+    const email = String(data.get('email') ?? '')
+    const query = String(data.get('query') ?? '')
+    const subject = `New project request from ${name}`
+    const body = [
+      `Name: ${name}`,
+      `Mobile Number: ${mobile}`,
+      `Email Address: ${email}`,
+      '',
+      'Business Query:',
+      query,
+    ].join('\n')
+
+    const composeUrl = `${gmailComposeBase}&to=contact@bittstech.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+    window.open(composeUrl, '_blank', 'noopener,noreferrer')
+  }
+
+  function requireDetails(event: InvalidEvent<HTMLInputElement | HTMLTextAreaElement>) {
+    event.currentTarget.setCustomValidity('Please enter the details')
+  }
+
+  function clearValidation(event: FormEvent<HTMLInputElement | HTMLTextAreaElement>) {
+    event.currentTarget.setCustomValidity('')
+  }
+
   return (
     <section id="contact" className="relative overflow-hidden bg-background px-4 py-20 sm:px-6 lg:py-24">
       <div className="pointer-events-none absolute inset-0 bg-dotgrid opacity-45" />
@@ -30,7 +66,7 @@ export function CTA() {
           </p>
 
           <div className="mt-8 space-y-3">
-            <a href="mailto:contact@bittstech.com" className="flex items-center gap-3 text-sm font-medium text-background">
+            <a href={`${gmailComposeBase}&to=contact@bittstech.com`} target="_blank" rel="noreferrer" className="flex items-center gap-3 text-sm font-medium text-background">
               <span className="flex size-10 items-center justify-center rounded-full bg-white/10 text-accent">
                 <Mail className="size-4" />
               </span>
@@ -45,35 +81,53 @@ export function CTA() {
           </div>
         </div>
 
-        <form className="relative z-10 grid gap-3 rounded-3xl border border-white/10 bg-white/[0.07] p-4 backdrop-blur-xl sm:p-5">
-          {['Your Name', 'Mobile Number', 'Email Address (optional)'].map((label) => (
+        <form onSubmit={handleSubmit} className="relative z-10 grid gap-3 rounded-3xl border border-white/10 bg-white/[0.07] p-4 backdrop-blur-xl sm:p-5">
+          {['Your Name', 'Mobile Number', 'Email Address', 'Business Query'].map((label) => (
             <label key={label} className="sr-only">
               {label}
             </label>
           ))}
           <input
+            name="name"
             aria-label="Your Name"
             placeholder="Your Name"
+            required
+            onInvalid={requireDetails}
+            onInput={clearValidation}
             className="h-12 rounded-xl border border-white/10 bg-white/10 px-4 text-sm text-background outline-none transition-colors placeholder:text-background/45 focus:border-accent"
           />
           <input
+            name="mobile"
+            type="tel"
             aria-label="Mobile Number"
             placeholder="Mobile Number"
+            required
+            onInvalid={requireDetails}
+            onInput={clearValidation}
             className="h-12 rounded-xl border border-white/10 bg-white/10 px-4 text-sm text-background outline-none transition-colors placeholder:text-background/45 focus:border-accent"
           />
           <input
+            name="email"
+            type="email"
             aria-label="Email Address"
-            placeholder="Email Address (optional)"
+            placeholder="Email Address"
+            required
+            onInvalid={requireDetails}
+            onInput={clearValidation}
             className="h-12 rounded-xl border border-white/10 bg-white/10 px-4 text-sm text-background outline-none transition-colors placeholder:text-background/45 focus:border-accent"
           />
           <textarea
+            name="query"
             aria-label="Business Query"
-            placeholder="Business Query (optional)"
+            placeholder="Business Query"
             rows={5}
+            required
+            onInvalid={requireDetails}
+            onInput={clearValidation}
             className="resize-none rounded-xl border border-white/10 bg-white/10 px-4 py-3 text-sm text-background outline-none transition-colors placeholder:text-background/45 focus:border-accent"
           />
           <button
-            type="button"
+            type="submit"
             className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-accent px-6 text-sm font-semibold text-navy shadow-[0_10px_30px_rgba(0,174,239,0.28)] transition-transform hover:-translate-y-0.5"
           >
             Send My Request
