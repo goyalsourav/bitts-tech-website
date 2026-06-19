@@ -70,15 +70,13 @@ export function Process() {
           description="A transparent path from first conversation to long-term partnership."
         />
 
-        <StaggerGroup className="relative mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-6" stagger={0.06}>
+        <StaggerGroup className="relative mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-12" stagger={0.06}>
           {phases.map((phase, index) => (
             <StaggerItem
               key={phase.title}
-              className={`sm:col-span-1 lg:col-span-2 ${
-                index === 4 ? 'lg:col-start-2' : ''
-              }`}
+              className={getProcessPlacement(index)}
             >
-              <ProcessCard phase={phase} index={index} />
+              <ProcessCard phase={phase} index={index} featured={index === 3} />
             </StaggerItem>
           ))}
         </StaggerGroup>
@@ -90,9 +88,11 @@ export function Process() {
 function ProcessCard({
   phase,
   index,
+  featured = false,
 }: {
   phase: (typeof phases)[number]
   index: number
+  featured?: boolean
 }) {
   const Icon = phase.icon
 
@@ -100,28 +100,53 @@ function ProcessCard({
     <motion.article
       whileHover={{ y: -6 }}
       transition={{ type: 'spring', stiffness: 260, damping: 22 }}
-      className="premium-surface group relative flex h-full min-h-[230px] flex-col overflow-hidden rounded-2xl p-6"
+      className={`premium-surface group relative flex h-full flex-col overflow-hidden rounded-2xl p-6 ${
+        featured ? 'min-h-[250px] lg:p-8' : 'min-h-[220px]'
+      }`}
     >
+      {featured && (
+        <span className="pointer-events-none absolute -right-10 -top-10 size-40 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 blur-3xl" />
+      )}
       <div className="flex items-start justify-between gap-4">
-        <span className="flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary/10 to-accent/15 text-primary transition-colors duration-500 group-hover:from-primary group-hover:to-accent group-hover:text-primary-foreground">
-          <Icon className="size-5" />
+        <span
+          className={`flex items-center justify-center rounded-xl bg-gradient-to-br transition-colors duration-500 group-hover:from-primary group-hover:to-accent group-hover:text-primary-foreground ${
+            featured
+              ? 'size-14 from-primary to-accent text-primary-foreground shadow-[0_18px_40px_-24px_rgba(40,80,200,0.9)]'
+              : 'size-11 from-primary/10 to-accent/15 text-primary'
+          }`}
+        >
+          <Icon className={featured ? 'size-6' : 'size-5'} />
         </span>
         <span className="font-mono text-sm font-semibold text-primary/45">
           {String(index + 1).padStart(2, '0')}
         </span>
       </div>
 
-      <div className="mt-8 flex flex-1 flex-col">
+      <div className={featured ? 'mt-10 flex flex-1 flex-col' : 'mt-8 flex flex-1 flex-col'}>
         <span className="text-xs font-bold uppercase tracking-[0.18em] text-accent">
           {phase.label}
         </span>
-        <h3 className="mt-2 font-heading text-lg font-semibold text-foreground">
+        <h3 className={`mt-2 font-heading font-semibold text-foreground ${featured ? 'text-2xl' : 'text-lg'}`}>
           {phase.title}
         </h3>
-        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+        <p className={`mt-2 leading-relaxed text-muted-foreground ${featured ? 'max-w-2xl text-base' : 'text-sm'}`}>
           {phase.desc}
         </p>
       </div>
     </motion.article>
   )
+}
+
+function getProcessPlacement(index: number) {
+  const placements = [
+    'sm:col-span-1 lg:col-span-4',
+    'sm:col-span-1 lg:col-span-4',
+    'sm:col-span-1 lg:col-span-4',
+    'sm:col-span-2 lg:col-span-6 lg:col-start-4',
+    'sm:col-span-1 lg:col-span-4',
+    'sm:col-span-1 lg:col-span-4',
+    'sm:col-span-2 lg:col-span-4',
+  ]
+
+  return placements[index]
 }
