@@ -1,0 +1,12 @@
+packages:
+  - .
+
+overrides:
+  hono: 4.12.25
+
+onlyBuiltDependencies:
+  - sharp
+
+allowBuilds:
+  msw: true
+  sharp: true
