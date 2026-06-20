@@ -39,7 +39,7 @@ export function FAQ() {
   return (
     <section id="faqs" className="relative overflow-hidden bg-secondary/35 py-20 lg:py-24">
       <div className="pointer-events-none absolute inset-0 fine-grid opacity-45 mask-soft" />
-      <div className="relative mx-auto max-w-[1500px] px-4 sm:px-6">
+      <div className="relative mx-auto max-w-[1500px] px-[5%]">
         <SectionHeading
           eyebrow="FAQs"
           title="Common Questions"

@@ -47,7 +47,7 @@ export default async function WorkDetailPage({
       <ScrollProgress />
       <Navbar />
 
-      <section className="relative overflow-hidden bg-navy px-4 pb-12 pt-28 text-background sm:px-6 lg:pb-14 lg:pt-30">
+      <section className="relative overflow-hidden bg-navy px-[5%] pb-12 pt-28 text-background lg:pb-14 lg:pt-30">
         <div className="pointer-events-none absolute inset-0 opacity-[0.07] [background-image:radial-gradient(white_1px,transparent_1px)] [background-size:26px_26px]" />
         <div className="pointer-events-none absolute -right-20 top-20 size-[440px] rounded-full bg-accent/25 blur-3xl" />
         <div className="relative mx-auto max-w-6xl">
@@ -93,7 +93,7 @@ export default async function WorkDetailPage({
         </div>
       </section>
 
-      <section className="relative bg-background px-4 py-12 sm:px-6 lg:py-16">
+      <section className="relative bg-background px-[5%] py-12 lg:py-16">
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-5 lg:grid-cols-3">
             <SnapshotItem label="Industry" value={project.industry} />

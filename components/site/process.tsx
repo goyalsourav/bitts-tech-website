@@ -49,7 +49,7 @@ export function Process() {
     <section id="process" className="relative overflow-hidden bg-background py-20 lg:py-24">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
       <div className="pointer-events-none absolute inset-0 bg-dotgrid opacity-40" />
-      <div className="mx-auto max-w-[1500px] px-4 sm:px-6">
+      <div className="mx-auto max-w-[1500px] px-[5%]">
         <SectionHeading
           eyebrow="How we work"
           title="Simple Process. No Surprises."

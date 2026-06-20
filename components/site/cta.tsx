@@ -6,6 +6,7 @@ import { Mail, Phone, Send } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 const gmailComposeBase = 'https://mail.google.com/mail/?view=cm&fs=1'
+const contactEmail = 'bittstechinfo@gmail.com'
 
 export function CTA() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
@@ -56,7 +57,7 @@ export function CTA() {
   }
 
   return (
-    <section id="contact" className="relative overflow-hidden bg-background px-4 py-20 sm:px-6 lg:py-24">
+    <section id="contact" className="relative overflow-hidden bg-background px-[5%] py-20 lg:py-24">
       <div className="pointer-events-none absolute inset-0 bg-dotgrid opacity-45" />
       <motion.div
         initial={{ opacity: 0, y: 28 }}
@@ -81,11 +82,11 @@ export function CTA() {
           </p>
 
           <div className="mt-8 space-y-3">
-            <a href={`${gmailComposeBase}&to=contact@bittstech.com`} target="_blank" rel="noreferrer" className="flex items-center gap-3 text-sm font-medium text-background">
+            <a href={`${gmailComposeBase}&to=${contactEmail}`} target="_blank" rel="noreferrer" className="flex items-center gap-3 text-sm font-medium text-background">
               <span className="flex size-10 items-center justify-center rounded-full bg-white/10 text-accent">
                 <Mail className="size-4" />
               </span>
-              contact@bittstech.com
+              {contactEmail}
             </a>
             <a href="tel:+917358550765" className="flex items-center gap-3 text-sm font-medium text-background">
               <span className="flex size-10 items-center justify-center rounded-full bg-white/10 text-accent">

@@ -42,7 +42,7 @@ export default async function BlogDetailPage({
       <ScrollProgress />
       <Navbar />
 
-      <article className="relative overflow-hidden bg-dotgrid px-4 pb-20 pt-32 sm:px-6 lg:pb-24">
+      <article className="relative overflow-hidden bg-dotgrid px-[5%] pb-20 pt-32 lg:pb-24">
         <div className="pointer-events-none absolute -right-24 top-24 size-[420px] rounded-full bg-accent/15 blur-3xl" />
         <div className="relative mx-auto max-w-5xl">
           <Link

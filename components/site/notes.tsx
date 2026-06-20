@@ -22,7 +22,7 @@ export function Notes() {
   return (
     <section id="notes" className="relative overflow-hidden bg-background py-20 lg:py-24">
       <div className="pointer-events-none absolute inset-0 bg-dotgrid opacity-45" />
-      <div className="relative mx-auto max-w-[1500px] px-4 sm:px-6">
+      <div className="relative mx-auto max-w-[1500px] px-[5%]">
         <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
           <div className="flex flex-wrap items-end gap-4">
             <SectionHeading

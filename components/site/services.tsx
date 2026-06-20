@@ -50,7 +50,7 @@ export function Services() {
     <section id="services" className="relative overflow-hidden bg-secondary/35 py-20 lg:py-24">
       <div className="pointer-events-none absolute inset-0 fine-grid opacity-50 mask-soft" />
       <div className="pointer-events-none absolute left-1/2 top-10 h-px w-[78vw] -translate-x-1/2 bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
-      <div className="relative mx-auto max-w-[1500px] px-4 sm:px-6">
+      <div className="relative mx-auto max-w-[1500px] px-[5%]">
         <SectionHeading
           eyebrow="Services"
           title={

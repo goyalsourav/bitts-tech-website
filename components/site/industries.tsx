@@ -69,7 +69,7 @@ export function Industries() {
   return (
     <section id="industries" className="relative overflow-hidden bg-secondary/35 py-20 lg:py-24">
       <div className="pointer-events-none absolute inset-0 fine-grid opacity-45 mask-soft" />
-      <div className="relative mx-auto max-w-[1500px] px-4 sm:px-6">
+      <div className="relative mx-auto max-w-[1500px] px-[5%]">
         <div className="mx-auto max-w-2xl text-center">
           <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary">
             <span className="size-1.5 rounded-full bg-accent" />

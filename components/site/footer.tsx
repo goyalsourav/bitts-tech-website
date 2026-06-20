@@ -1,6 +1,8 @@
 import { Mail } from 'lucide-react'
 import { Logo } from './logo'
 
+const contactEmail = 'bittstechinfo@gmail.com'
+
 const columns = [
   {
     title: 'Quick Link',
@@ -34,7 +36,7 @@ const columns = [
 const socials = [
   { icon: InstagramIcon, label: 'Instagram', href: 'https://www.instagram.com/bittstechinfo/' },
   { icon: LinkedinIcon, label: 'LinkedIn', href: 'https://www.linkedin.com/company/bittstech' },
-  { icon: Mail, label: 'Email', href: 'https://mail.google.com/mail/?view=cm&fs=1&to=contact@bittstech.com' },
+  { icon: Mail, label: 'Email', href: `https://mail.google.com/mail/?view=cm&fs=1&to=${contactEmail}` },
   { icon: WhatsappIcon, label: 'WhatsApp', href: 'https://wa.me/917358550765' },
 ]
 
@@ -68,7 +70,7 @@ function WhatsappIcon({ className }: { className?: string }) {
 export function Footer() {
   return (
     <footer className="relative border-t border-border bg-secondary/40">
-      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+      <div className="mx-auto max-w-6xl px-[5%] py-16">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
             <Logo />
@@ -122,7 +124,7 @@ export function Footer() {
             <span>India-based software solutions agency</span>
             <span className="flex items-center gap-2">
               <span className="size-2 rounded-full bg-primary" />
-              contact@bittstech.com
+              {contactEmail}
             </span>
             <span>+91 73585 50765</span>
           </div>
