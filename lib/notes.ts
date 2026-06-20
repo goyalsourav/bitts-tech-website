@@ -1,27 +1,28 @@
 export const notes = [
   {
-    slug: 'business-automation-reduces-manual-work',
-    category: 'Automation',
-    read: '10min',
-    title: 'How Business Automation Reduces Daily Manual Work',
+    slug: 'why-websites-are-important',
+    category: 'Web Development / Digital Marketing',
+    read: '12min',
+    title: 'Why Websites Are Important: The Complete Guide for Modern Businesses',
+    titleTag: 'Why Websites Are Important: The Complete 2026 Guide for Businesses',
+    metaDescription:
+      'Why is a website important for your business? See the research-backed reasons, real conversion data, and the essential elements every website needs to win customers.',
     excerpt:
-      'A practical look at repetitive work, handoffs, reminders, and the systems that can remove daily drag.',
-  },
-  {
-    slug: 'prepare-before-building-custom-website',
-    category: 'Web Apps',
-    read: '8min',
-    title: 'What to Prepare Before Building a Custom Website',
-    excerpt:
-      'A simple planning guide for goals, pages, workflows, content, and decisions before development starts.',
-  },
-  {
-    slug: 'post-go-live-support-matters',
-    category: 'Support',
-    read: '7min',
-    title: 'Why Post Go-live Support Matters for Software Teams',
-    excerpt:
-      'Launch is only the beginning. Support keeps products stable, useful, and aligned with real users.',
+      'A field guide to what a website does, why it matters, and what yours actually needs.',
+    focusKeyword: 'why websites are important',
+    secondaryKeywords: [
+      'importance of a website for business',
+      'benefits of having a website',
+      'why every business needs a website',
+      'what should a website contain',
+      'website essentials checklist',
+      'online presence for business',
+      'website credibility',
+    ],
+    image: '/blog/why-websites-are-important-featured.png',
+    imageAlt: 'business owner reviewing website analytics dashboard',
+    author: 'BittsTech Team',
+    year: '2026',
   },
 ] as const
 

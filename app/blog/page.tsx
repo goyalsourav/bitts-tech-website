@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowLeft, ArrowRight, BookOpen } from 'lucide-react'
 import { Footer } from '@/components/site/footer'
 import { Navbar } from '@/components/site/navbar'
@@ -9,7 +10,7 @@ import { notes } from '@/lib/notes'
 export const metadata: Metadata = {
   title: 'Blog - Bitts Tech',
   description:
-    'Read practical Bitts Tech notes on websites, automation, integrations, and post-launch support.',
+    'Read practical Bitts Tech notes on websites, digital marketing, automation, integrations, and post-launch support.',
 }
 
 export default function BlogPage() {
@@ -49,6 +50,15 @@ export default function BlogPage() {
             {notes.map((note) => (
               <Link key={note.slug} href={`/blog/${note.slug}`} className="group block">
                 <article className="premium-surface h-full rounded-2xl p-6 transition-transform duration-500 hover:-translate-y-1.5">
+                  <div className="relative -mx-2 -mt-2 mb-6 aspect-[16/9] overflow-hidden rounded-xl border border-border bg-card">
+                    <Image
+                      src={note.image}
+                      alt={note.imageAlt}
+                      fill
+                      sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 90vw"
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
                   <div className="flex items-center justify-between gap-4">
                     <span className="flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary/10 to-accent/15 text-primary">
                       <BookOpen className="size-5" />

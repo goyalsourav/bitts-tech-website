@@ -14,6 +14,7 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.bittstech.com'),
   title: 'Bitts Tech',
   description:
     'Bitts Tech creates custom websites, web applications, automation systems, API integrations, and reliable technical solutions for growing businesses.',
