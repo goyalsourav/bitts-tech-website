@@ -48,7 +48,7 @@ export function PainPoints() {
   return (
     <section className="relative overflow-hidden bg-background py-20 lg:py-24">
       <div className="pointer-events-none absolute inset-0 bg-dotgrid opacity-45" />
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
+      <div className="relative mx-auto max-w-[1500px] px-4 sm:px-6">
         <SectionHeading
           eyebrow="Sound familiar?"
           title={

@@ -33,7 +33,7 @@ export function Why() {
       <div className="pointer-events-none absolute inset-0 bg-dotgrid opacity-50" />
       <ArcLines className="pointer-events-none absolute -top-10 left-0 h-72 w-full text-primary/40" />
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
+      <div className="relative mx-auto max-w-[1500px] px-4 sm:px-6">
         <SectionHeading
           eyebrow="Why Teams Choose"
           title="Why Teams Choose BittsTech"

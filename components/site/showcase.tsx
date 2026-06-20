@@ -29,22 +29,21 @@ export function Showcase() {
       <div className="pointer-events-none absolute -left-20 top-1/3 size-[420px] rounded-full bg-primary/30 blur-3xl" />
       <div className="pointer-events-none absolute -right-20 bottom-0 size-[420px] rounded-full bg-accent/25 blur-3xl" />
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="max-w-3xl text-left">
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-accent">
-            <span className="size-1.5 rounded-full bg-accent" />
-            What we have built
-          </span>
-          <h2 className="mt-5 font-heading text-3xl font-bold tracking-tight text-background sm:text-4xl lg:whitespace-nowrap lg:text-[2.55rem] lg:leading-[1.06] xl:text-[2.85rem]">
-            Real Products for <span className="text-accent">Real Businesses</span>
-          </h2>
-          <p className="mt-4 text-base leading-relaxed text-background/70 sm:text-lg lg:whitespace-nowrap">
-            We do not just talk about building software. Here is what we have
-            already shipped for growing teams.
-          </p>
-        </div>
-
-        <div className="mt-10 flex items-center justify-end gap-4">
+      <div className="relative mx-auto max-w-[1500px] px-4 sm:px-6">
+        <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+          <div className="max-w-3xl text-left">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-accent">
+              <span className="size-1.5 rounded-full bg-accent" />
+              What we have built
+            </span>
+            <h2 className="mt-5 font-heading text-3xl font-bold tracking-tight text-background sm:text-4xl lg:whitespace-nowrap lg:text-[2.55rem] lg:leading-[1.06] xl:text-[2.85rem]">
+              Real Products for <span className="text-accent">Real Businesses</span>
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-background/70 sm:text-lg lg:whitespace-nowrap">
+              We do not just talk about building software. Here is what we have
+              already shipped for growing teams.
+            </p>
+          </div>
           <div className="flex gap-2">
             <button
               type="button"
@@ -67,7 +66,7 @@ export function Showcase() {
 
         <div
           ref={sliderRef}
-          className="mt-5 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="mt-8 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {workProjects.map((item) => {
             const Icon = icons[item.slug]

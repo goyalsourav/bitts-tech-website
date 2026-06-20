@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { Logo } from './logo'
@@ -16,12 +16,24 @@ const links = [
 
 export function Navbar() {
   const pathname = usePathname()
+  const router = useRouter()
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const solid = scrolled || pathname !== '/'
 
   function routeHref(hash: string) {
     return pathname === '/' ? hash : `/${hash}`
+  }
+
+  function goHome() {
+    setOpen(false)
+    if (pathname === '/') {
+      window.history.pushState(null, '', '/')
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      return
+    }
+
+    router.push('/')
   }
 
   useEffect(() => {
@@ -45,12 +57,13 @@ export function Navbar() {
             : 'border border-transparent bg-transparent'
         }`}
       >
-        <Link
-          href="/"
+        <button
+          type="button"
+          onClick={goHome}
           className="flex items-center gap-2 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/45 focus-visible:ring-offset-4 focus-visible:ring-offset-background"
         >
           <Logo />
-        </Link>
+        </button>
 
         <div className="hidden items-center gap-8 md:flex">
           {links.map((l) => (

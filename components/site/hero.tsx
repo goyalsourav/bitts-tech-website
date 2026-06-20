@@ -47,7 +47,7 @@ export function Hero() {
       <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-background to-transparent" />
       <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-36 bg-gradient-to-t from-background to-transparent" />
 
-      <div className="mx-auto grid min-h-[calc(100svh-5rem)] w-full max-w-7xl grid-cols-1 items-center gap-10 px-4 pb-16 sm:px-6 md:grid-cols-2 lg:gap-14">
+      <div className="mx-auto grid min-h-[calc(100svh-5rem)] w-full max-w-[1500px] grid-cols-1 items-center gap-10 px-4 pb-16 sm:px-6 md:grid-cols-2 lg:gap-14">
         <motion.div
           className="relative z-10 min-w-0"
           initial={{ opacity: 0, y: 24 }}
@@ -151,7 +151,7 @@ function TrustedFlow() {
   const flow = [...futureBrands, ...futureBrands, ...futureBrands]
 
   return (
-    <div className="relative z-10 mx-auto w-full max-w-7xl px-4 pb-14 sm:px-6">
+    <div className="relative z-10 mx-auto w-full max-w-[1500px] px-4 pb-14 sm:px-6">
       <p className="text-center text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">
         Trusted by founders & business teams
       </p>
