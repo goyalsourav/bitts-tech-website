@@ -49,7 +49,7 @@ export function Notes() {
               </button>
             </div>
           </div>
-          <Link href="/blog/business-automation-reduces-manual-work" className="inline-flex items-center gap-2 text-sm font-semibold text-primary">
+          <Link href="/blog" className="inline-flex items-center gap-2 text-sm font-semibold text-primary">
             Explore all
             <ArrowRight className="size-4" />
           </Link>

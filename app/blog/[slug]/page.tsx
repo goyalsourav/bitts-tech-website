@@ -46,11 +46,11 @@ export default async function BlogDetailPage({
         <div className="pointer-events-none absolute -right-24 top-24 size-[420px] rounded-full bg-accent/15 blur-3xl" />
         <div className="relative mx-auto max-w-5xl">
           <Link
-            href="/#notes"
+            href="/blog"
             className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold text-muted-foreground transition-colors hover:text-primary"
           >
             <ArrowLeft className="size-4" />
-            Back to notes
+            Back to all notes
           </Link>
 
           <div className="mt-12 max-w-4xl">
