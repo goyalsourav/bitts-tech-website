@@ -47,10 +47,10 @@ export default async function WorkDetailPage({
       <ScrollProgress />
       <Navbar />
 
-      <section className="relative overflow-hidden bg-navy px-4 pb-14 pt-32 text-background sm:px-6 lg:pb-18">
+      <section className="relative overflow-hidden bg-navy px-4 pb-12 pt-28 text-background sm:px-6 lg:pb-14 lg:pt-30">
         <div className="pointer-events-none absolute inset-0 opacity-[0.07] [background-image:radial-gradient(white_1px,transparent_1px)] [background-size:26px_26px]" />
         <div className="pointer-events-none absolute -right-20 top-20 size-[440px] rounded-full bg-accent/25 blur-3xl" />
-        <div className="relative mx-auto max-w-7xl">
+        <div className="relative mx-auto max-w-6xl">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <Link
               href="/#showcase"
@@ -68,11 +68,11 @@ export default async function WorkDetailPage({
             </Link>
           </div>
 
-          <div className="mt-12 max-w-4xl">
+          <div className="mt-10 max-w-3xl">
             <span className="inline-flex rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-accent">
               {project.category}
             </span>
-            <h1 className="mt-5 font-heading text-4xl font-bold leading-tight text-background text-balance sm:text-5xl lg:text-6xl">
+            <h1 className="mt-5 font-heading text-4xl font-bold leading-tight text-background sm:text-5xl lg:text-[3.4rem]">
               {project.title}
             </h1>
             <p className="mt-5 max-w-3xl text-base leading-relaxed text-background/72 sm:text-lg">
@@ -80,7 +80,7 @@ export default async function WorkDetailPage({
             </p>
           </div>
 
-          <div className="mt-10 grid gap-3 sm:grid-cols-3">
+          <div className="mt-8 grid gap-3 sm:grid-cols-3">
             {project.results.map((result) => (
               <div key={result.label} className="rounded-2xl border border-white/10 bg-white/[0.06] p-5 backdrop-blur-xl">
                 <p className="font-heading text-2xl font-semibold text-accent">
@@ -93,8 +93,8 @@ export default async function WorkDetailPage({
         </div>
       </section>
 
-      <section className="relative bg-background px-4 py-14 sm:px-6 lg:py-18">
-        <div className="mx-auto max-w-7xl">
+      <section className="relative bg-background px-4 py-12 sm:px-6 lg:py-16">
+        <div className="mx-auto max-w-6xl">
           <div className="grid gap-5 lg:grid-cols-3">
             <SnapshotItem label="Industry" value={project.industry} />
             <SnapshotItem label="Platform" value={project.platform} />

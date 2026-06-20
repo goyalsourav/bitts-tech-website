@@ -31,13 +31,13 @@ export function SectionHeading({
         </Reveal>
       )}
       <Reveal delay={0.05}>
-        <h2 className="mt-5 font-heading text-3xl font-bold tracking-tight text-foreground text-balance sm:text-4xl lg:text-[2.85rem] lg:leading-[1.06]">
+        <h2 className="mt-5 font-heading text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:whitespace-nowrap lg:text-[2.55rem] lg:leading-[1.06] xl:text-[2.85rem]">
           {title}
         </h2>
       </Reveal>
       {description && (
         <Reveal delay={0.1}>
-          <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+          <p className="mt-4 max-w-none text-base leading-relaxed text-muted-foreground sm:text-lg lg:whitespace-nowrap">
             {description}
           </p>
         </Reveal>

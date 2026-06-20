@@ -1,6 +1,8 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import { Logo } from './logo'
@@ -13,8 +15,14 @@ const links = [
 ]
 
 export function Navbar() {
+  const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const solid = scrolled || pathname !== '/'
+
+  function routeHref(hash: string) {
+    return pathname === '/' ? hash : `/${hash}`
+  }
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -32,38 +40,38 @@ export function Navbar() {
     >
       <nav
         className={`mx-auto flex w-[calc(100vw-2rem)] max-w-6xl items-center justify-between rounded-2xl px-4 py-3 transition-all duration-300 sm:w-full sm:px-6 ${
-          scrolled
-            ? 'border border-border/70 bg-background/70 shadow-[0_8px_30px_rgba(20,40,80,0.08)] backdrop-blur-xl'
+          solid
+            ? 'border border-border/70 bg-background/88 shadow-[0_8px_30px_rgba(20,40,80,0.08)] backdrop-blur-xl'
             : 'border border-transparent bg-transparent'
         }`}
       >
-        <a
-          href="#top"
+        <Link
+          href="/"
           className="flex items-center gap-2 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/45 focus-visible:ring-offset-4 focus-visible:ring-offset-background"
         >
           <Logo />
-        </a>
+        </Link>
 
         <div className="hidden items-center gap-8 md:flex">
           {links.map((l) => (
-            <a
+            <Link
               key={l.href}
-              href={l.href}
+              href={routeHref(l.href)}
               className="group relative rounded-md text-sm font-medium text-muted-foreground transition-colors hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/35 focus-visible:ring-offset-4 focus-visible:ring-offset-background"
             >
               {l.label}
               <span className="absolute -bottom-1 left-0 h-px w-0 bg-primary transition-all duration-300 group-hover:w-full" />
-            </a>
+            </Link>
           ))}
         </div>
 
         <div className="flex items-center gap-2">
-          <a
-            href="#contact"
+          <Link
+            href={routeHref('#contact')}
             className="hidden rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-[0_6px_20px_rgba(40,80,200,0.25)] transition-transform hover:-translate-y-0.5 sm:inline-flex"
           >
             Get in touch
-          </a>
+          </Link>
           <button
             type="button"
             aria-label="Toggle menu"
@@ -85,22 +93,22 @@ export function Navbar() {
           >
             <div className="flex flex-col gap-1">
               {links.map((l) => (
-                <a
+                <Link
                   key={l.href}
-                  href={l.href}
+                  href={routeHref(l.href)}
                   onClick={() => setOpen(false)}
                   className="rounded-xl px-4 py-3 text-base font-medium text-foreground transition-colors hover:bg-muted"
                 >
                   {l.label}
-                </a>
+                </Link>
               ))}
-              <a
-                href="#contact"
+              <Link
+                href={routeHref('#contact')}
                 onClick={() => setOpen(false)}
                 className="mt-2 rounded-xl bg-primary px-4 py-3 text-center text-base font-semibold text-primary-foreground"
               >
                 Get in touch
-              </a>
+              </Link>
             </div>
           </motion.div>
         )}

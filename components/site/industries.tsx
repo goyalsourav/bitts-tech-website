@@ -75,7 +75,7 @@ export function Industries() {
             <span className="size-1.5 rounded-full bg-accent" />
             Industries
           </span>
-          <h2 className="mt-5 font-heading text-3xl font-bold tracking-tight text-foreground text-balance sm:text-4xl lg:text-[2.85rem] lg:leading-[1.06]">
+          <h2 className="mt-5 font-heading text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:whitespace-nowrap lg:text-[2.55rem] lg:leading-[1.06] xl:text-[2.85rem]">
             We Build for Any Business
           </h2>
         </div>

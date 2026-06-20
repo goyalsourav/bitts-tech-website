@@ -39,14 +39,14 @@ export function FAQ() {
   return (
     <section id="faqs" className="relative overflow-hidden bg-secondary/35 py-20 lg:py-24">
       <div className="pointer-events-none absolute inset-0 fine-grid opacity-45 mask-soft" />
-      <div className="relative mx-auto max-w-5xl px-4 sm:px-6">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
         <SectionHeading
           eyebrow="FAQs"
           title="Common Questions"
           description="Clear answers before we start building together."
         />
 
-        <div className="mt-10 space-y-3">
+        <div className="mt-10 grid gap-3 md:grid-cols-2">
           {faqs.map((item) => (
             <details
               key={item.q}

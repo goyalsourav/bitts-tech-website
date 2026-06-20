@@ -35,19 +35,16 @@ export function Showcase() {
             <span className="size-1.5 rounded-full bg-accent" />
             What we have built
           </span>
-          <h2 className="mt-5 font-heading text-3xl font-bold tracking-tight text-background text-balance sm:text-4xl lg:text-[2.85rem] lg:leading-[1.06]">
+          <h2 className="mt-5 font-heading text-3xl font-bold tracking-tight text-background sm:text-4xl lg:whitespace-nowrap lg:text-[2.55rem] lg:leading-[1.06] xl:text-[2.85rem]">
             Real Products for <span className="text-accent">Real Businesses</span>
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-background/70 sm:text-lg">
+          <p className="mt-4 text-base leading-relaxed text-background/70 sm:text-lg lg:whitespace-nowrap">
             We do not just talk about building software. Here is what we have
             already shipped for growing teams.
           </p>
         </div>
 
-        <div className="mt-10 flex items-center justify-between gap-4">
-          <p className="text-sm text-background/60">
-            Slide through project work, then open the full case study.
-          </p>
+        <div className="mt-10 flex items-center justify-end gap-4">
           <div className="flex gap-2">
             <button
               type="button"

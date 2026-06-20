@@ -8,6 +8,7 @@ import { Why } from '@/components/site/why'
 import { Industries } from '@/components/site/industries'
 import { Process } from '@/components/site/process'
 import { Notes } from '@/components/site/notes'
+import { Reviews } from '@/components/site/reviews'
 import { FAQ } from '@/components/site/faq'
 import { CTA } from '@/components/site/cta'
 import { Footer } from '@/components/site/footer'
@@ -25,6 +26,7 @@ export default function Page() {
       <Why />
       <Industries />
       <Notes />
+      <Reviews />
       <FAQ />
       <CTA />
       <Footer />
