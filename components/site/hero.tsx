@@ -115,8 +115,8 @@ export function Hero() {
           >
             {[
               { icon: Workflow, label: 'Projects delivered' },
-              { icon: TimerReset, label: '4.32x revenue lift' },
               { icon: ShieldCheck, label: 'API + UI integrations' },
+              { icon: TimerReset, label: '4.32x revenue lift' },
             ].map((item) => {
               const Icon = item.icon
               return (
@@ -133,7 +133,7 @@ export function Hero() {
         </motion.div>
 
         <motion.div
-          className="relative z-0 mx-auto mt-8 w-full max-w-[390px] md:mt-0 md:max-w-[460px] lg:max-w-[500px]"
+          className="relative z-0 mx-auto mt-8 hidden w-full max-w-[390px] md:mt-0 md:block md:max-w-[460px] lg:max-w-[500px]"
           initial={{ opacity: 0, scale: 0.96, y: 24 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.82, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
