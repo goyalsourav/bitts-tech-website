@@ -10,6 +10,7 @@ import { Logo } from './logo'
 const links = [
   { label: 'Services', href: '#services' },
   { label: 'Our Work', href: '#showcase' },
+  { label: 'Blog', href: '/blog' },
   { label: 'Process', href: '#process' },
   { label: 'FAQs', href: '#faqs' },
 ]
@@ -22,6 +23,7 @@ export function Navbar() {
   const solid = scrolled || pathname !== '/'
 
   function routeHref(hash: string) {
+    if (hash.startsWith('/')) return hash
     return pathname === '/' ? hash : `/${hash}`
   }
 

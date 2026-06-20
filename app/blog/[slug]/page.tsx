@@ -138,9 +138,61 @@ export default async function BlogDetailPage({
   if (!note) notFound()
 
   const blocks = getArticleBlocks(note.slug)
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Article',
+        headline: note.title,
+        description: note.metaDescription,
+        image: `https://www.bittstech.com${note.image}`,
+        author: {
+          '@type': 'Organization',
+          name: note.author,
+          url: 'https://www.bittstech.com',
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: 'BittsTech',
+          logo: {
+            '@type': 'ImageObject',
+            url: 'https://www.bittstech.com/bitts-tech-logo.png',
+          },
+        },
+        mainEntityOfPage: `https://www.bittstech.com/blog/${note.slug}`,
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: 'https://www.bittstech.com',
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Blog',
+            item: 'https://www.bittstech.com/blog',
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: note.title,
+            item: `https://www.bittstech.com/blog/${note.slug}`,
+          },
+        ],
+      },
+    ],
+  }
 
   return (
     <main className="relative overflow-x-clip bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <ScrollProgress />
       <Navbar />
 

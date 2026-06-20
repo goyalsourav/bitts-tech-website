@@ -74,11 +74,11 @@ export function CTA() {
             Ready to build?
           </span>
           <h2 className="mt-5 max-w-xl font-heading text-3xl font-bold leading-tight text-background text-balance sm:text-4xl lg:text-5xl">
-            Let us turn your idea into a reliable digital product.
+            Book a Website / Software Consultation.
           </h2>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-background/72">
             Tell us what you need. We will respond quickly with a practical next
-            step, not a generic pitch.
+            step for your website, web app, automation, or business system.
           </p>
 
           <div className="mt-8 space-y-3">

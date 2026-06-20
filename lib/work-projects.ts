@@ -1,6 +1,6 @@
 export const workProjects = [
   {
-    slug: 'travel-suite',
+    slug: 'travel-agency-management-platform',
     category: 'Travel & Tourism',
     title: 'Travel Agency Management Platform',
     cardTitle: 'End-to-End Travel Agency Platform',
@@ -47,7 +47,7 @@ export const workProjects = [
     ],
   },
   {
-    slug: 'construction-suite',
+    slug: 'construction-management-software',
     category: 'Construction & Infrastructure',
     title: 'Construction Management Software',
     cardTitle: 'Multi-Site Construction Management System',
