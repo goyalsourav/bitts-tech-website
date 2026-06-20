@@ -117,12 +117,12 @@ export function Hero() {
               { icon: Workflow, label: 'Projects delivered' },
               { icon: ShieldCheck, label: 'API + UI integrations' },
               { icon: TimerReset, label: '4.32x revenue lift' },
-            ].map((item) => {
+            ].map((item, index) => {
               const Icon = item.icon
               return (
                 <span
                   key={item.label}
-                  className="flex items-center gap-2 rounded-full border border-border/70 bg-card/60 px-3 py-2 backdrop-blur"
+                  className={`flex items-center gap-2 rounded-full border border-border/70 bg-card/60 px-3 py-2 backdrop-blur ${index === 2 ? 'mx-auto sm:mx-0' : ''}`}
                 >
                   <Icon className="size-4 text-primary" />
                   {item.label}
