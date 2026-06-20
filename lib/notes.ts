@@ -50,6 +50,31 @@ export const notes = [
     author: 'BittsTech Team',
     year: '2026',
   },
+  {
+    slug: 'website-revamp-checklist-before-running-ads',
+    category: 'Web Development / Paid Advertising',
+    read: '13min',
+    title:
+      'Website Revamp Checklist Before Running Ads: The Pre-Launch Audit That Protects Your Budget',
+    titleTag: 'Website Revamp Checklist Before Running Ads (2026 Pre-Launch Audit)',
+    metaDescription:
+      "Don't launch ads on an unready site. This website revamp checklist covers speed, message match, conversion elements, and tracking — backed by real Quality Score and conversion data.",
+    excerpt:
+      'A pre-launch audit covering speed, message match, conversion, and tracking — before you spend.',
+    focusKeyword: 'website revamp checklist before running ads',
+    secondaryKeywords: [
+      'pre-launch website audit',
+      'landing page checklist for ads',
+      'website ready for ads',
+      'Google Ads landing page experience',
+      'conversion rate optimization checklist',
+      'website audit before PPC',
+    ],
+    image: '/blog/website-revamp-checklist-featured.png',
+    imageAlt: 'before and after website audit checklist diagram',
+    author: 'BittsTech Team',
+    year: '2026',
+  },
 ] as const
 
 export type Note = (typeof notes)[number]
