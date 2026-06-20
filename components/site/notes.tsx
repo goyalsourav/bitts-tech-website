@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
 import { useRef } from 'react'
 import { ArrowLeft, ArrowRight, BookOpen } from 'lucide-react'
 import { notes } from '@/lib/notes'
@@ -67,15 +66,6 @@ export function Notes() {
               className="group block min-w-[86%] snap-start sm:min-w-[390px] lg:min-w-[410px]"
             >
               <article className="premium-surface h-full rounded-2xl p-6 transition-transform duration-500 hover:-translate-y-1.5">
-                <div className="relative -mx-2 -mt-2 mb-6 aspect-[16/9] overflow-hidden rounded-xl border border-border bg-card">
-                  <Image
-                    src={note.image}
-                    alt={note.imageAlt}
-                    fill
-                    sizes="(min-width: 1024px) 410px, (min-width: 640px) 390px, 86vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                </div>
                 <div className="flex items-center justify-between gap-4">
                   <span className="flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary/10 to-accent/15 text-primary">
                     <BookOpen className="size-5" />

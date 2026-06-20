@@ -70,6 +70,7 @@ function getArticleBlocks(slug: string) {
 
     if (!line) continue
     if (line.startsWith('# ')) continue
+    if (line === '---') break
 
     if (line.startsWith('## ')) {
       blocks.push({ type: 'heading', level: 2, text: line.replace(/^##\s+/, '') })
@@ -93,9 +94,6 @@ function getArticleBlocks(slug: string) {
       blocks.push({ type: 'list', items })
       continue
     }
-
-    if (line === '---') continue
-
     const paragraph = [line]
 
     while (
