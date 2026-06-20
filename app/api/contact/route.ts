@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import { getResend } from '@/lib/resend'
 
-const toEmail = process.env.RESEND_TO_EMAIL ?? 'contact@bittstech.com'
+const toEmail = process.env.RESEND_TO_EMAIL ?? 'bittstechinfo@gmail.com'
 const fromEmail = process.env.RESEND_FROM_EMAIL ?? 'BittsTech Website <onboarding@resend.dev>'
 
 function clean(value: unknown) {
