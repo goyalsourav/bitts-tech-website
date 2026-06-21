@@ -22,12 +22,12 @@ export async function generateMetadata({
 
   if (!project) {
     return {
-      title: 'Work - BittsTech',
+      title: 'Bitts Tech',
     }
   }
 
   return {
-    title: `${project.title} - BittsTech`,
+    title: 'Bitts Tech',
     description: project.summary,
     alternates: {
       canonical: `/work/${project.slug}`,

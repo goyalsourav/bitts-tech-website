@@ -21,10 +21,10 @@ export async function generateMetadata({
   const { slug } = await params
   const service = getService(slug)
 
-  if (!service) return { title: 'Services - BittsTech' }
+  if (!service) return { title: 'Bitts Tech' }
 
   return {
-    title: service.metaTitle,
+    title: 'Bitts Tech',
     description: service.metaDescription,
     alternates: {
       canonical: `/services/${service.slug}`,

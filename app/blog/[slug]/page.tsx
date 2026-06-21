@@ -27,10 +27,10 @@ export async function generateMetadata({
   const { slug } = await params
   const note = getNote(slug)
 
-  if (!note) return { title: 'Blog - BittsTech' }
+  if (!note) return { title: 'Bitts Tech' }
 
   return {
-    title: note.titleTag,
+    title: 'Bitts Tech',
     description: note.metaDescription,
     keywords: [note.focusKeyword, ...note.secondaryKeywords],
     alternates: {

@@ -17,7 +17,7 @@ import { faqs } from '@/components/site/faq'
 import { services } from '@/lib/services'
 
 export const metadata: Metadata = {
-  title: 'Custom Website & Web App Development Agency in India | BittsTech',
+  title: 'Bitts Tech',
   description:
     'BittsTech builds custom websites, web apps, business automation systems, and software solutions for growing businesses in India. Get fast, scalable digital products.',
   alternates: {

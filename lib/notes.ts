@@ -75,6 +75,32 @@ export const notes = [
     author: 'BittsTech Team',
     year: '2026',
   },
+  {
+    slug: 'grow-small-business-online-india',
+    category: 'Digital Growth / Small Business',
+    read: '13min',
+    title:
+      'How to Grow Your Small Business Online in India: A Practical 2026 Playbook',
+    titleTag: 'How to Grow Your Small Business Online in India (2026 Playbook)',
+    metaDescription:
+      'A practical, data-backed playbook for growing a small business online in India: website, WhatsApp, local SEO, and UPI, built for how Indian customers actually shop.',
+    excerpt:
+      'A field guide to website, WhatsApp, SEO, and UPI, built for how India actually shops online.',
+    focusKeyword: 'grow small business online in India',
+    secondaryKeywords: [
+      'digital marketing for small business India',
+      'online presence for Indian SMBs',
+      'WhatsApp Business India',
+      'local SEO India',
+      'UPI for small business',
+      'how to grow business online India',
+    ],
+    image: '/blog/grow-small-business-online-india-featured.png',
+    imageAlt:
+      'five-stage digital growth funnel for Indian small businesses: discover, message, trust, pay, repeat',
+    author: 'BittsTech Team',
+    year: '2026',
+  },
 ] as const
 
 export type Note = (typeof notes)[number]

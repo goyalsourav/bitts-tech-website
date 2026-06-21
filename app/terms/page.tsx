@@ -4,7 +4,7 @@ import { Navbar } from '@/components/site/navbar'
 import { ScrollProgress } from '@/components/site/scroll-progress'
 
 export const metadata: Metadata = {
-  title: 'Terms | BittsTech',
+  title: 'Bitts Tech',
   description:
     'Terms for using the BittsTech website and contacting BittsTech for websites, web apps, automation, and software services.',
   alternates: {

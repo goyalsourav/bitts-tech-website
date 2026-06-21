@@ -7,7 +7,7 @@ import { ScrollProgress } from '@/components/site/scroll-progress'
 import { notes } from '@/lib/notes'
 
 export const metadata: Metadata = {
-  title: 'Blog - Bitts Tech',
+  title: 'Bitts Tech',
   description:
     'Read practical Bitts Tech notes on websites, digital marketing, automation, integrations, and post-launch support.',
 }

@@ -4,7 +4,7 @@ import { Navbar } from '@/components/site/navbar'
 import { ScrollProgress } from '@/components/site/scroll-progress'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | BittsTech',
+  title: 'Bitts Tech',
   description:
     'Privacy Policy for BittsTech covering contact form submissions, communication details, and website analytics.',
   alternates: {
