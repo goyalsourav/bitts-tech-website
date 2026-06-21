@@ -30,7 +30,9 @@ export async function generateMetadata({
   if (!note) return { title: 'Bitts Tech' }
 
   return {
-    title: 'Bitts Tech',
+    title: {
+      absolute: note.titleTag,
+    },
     description: note.metaDescription,
     keywords: [note.focusKeyword, ...note.secondaryKeywords],
     alternates: {
