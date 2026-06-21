@@ -144,12 +144,22 @@ export default async function ServiceDetailPage({
                 What this service includes
               </h2>
               <div className="mt-6 grid gap-4">
-                {service.outcomes.map((outcome) => (
-                  <div key={outcome} className="flex gap-3 border-t border-border py-4">
+                {service.included.map((item) => (
+                  <div key={item.title} className="flex gap-3 border-t border-border py-4">
                     <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-primary" />
-                    <p className="text-sm leading-relaxed text-muted-foreground">
-                      {outcome}
-                    </p>
+                    <div>
+                      <h3 className="font-heading text-base font-semibold text-foreground">
+                        {item.title}
+                      </h3>
+                      {item.paragraphs.map((paragraph) => (
+                        <p
+                          key={paragraph}
+                          className="mt-2 text-sm leading-relaxed text-muted-foreground"
+                        >
+                          {paragraph}
+                        </p>
+                      ))}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -175,6 +185,51 @@ export default async function ServiceDetailPage({
               </Link>
             </aside>
           </div>
+
+          <section className="mt-12 rounded-[2rem] border border-border bg-card p-6 sm:p-8">
+            <h2 className="font-heading text-3xl font-semibold text-foreground">
+              How we build it
+            </h2>
+            <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+              {service.process.map((step) => (
+                <article key={step.title} className="border-t border-border pt-4">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+                    {step.label}
+                  </p>
+                  <h3 className="mt-2 font-heading text-lg font-semibold text-foreground">
+                    {step.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    {step.description}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section className="mt-12 grid gap-6 lg:grid-cols-2">
+            <article className="rounded-[2rem] border border-border bg-card p-6 sm:p-8">
+              <h2 className="font-heading text-3xl font-semibold text-foreground">
+                Technology we use
+              </h2>
+              <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
+                {service.technology.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </div>
+            </article>
+
+            <article className="rounded-[2rem] border border-border bg-card p-6 sm:p-8">
+              <h2 className="font-heading text-3xl font-semibold text-foreground">
+                Who this is for
+              </h2>
+              <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
+                {service.whoFor.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </div>
+            </article>
+          </section>
 
           <section className="mt-12">
             <h2 className="font-heading text-3xl font-semibold text-foreground">
