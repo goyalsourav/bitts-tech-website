@@ -1,28 +1,160 @@
 'use client'
 
-import type { FormEvent, InvalidEvent } from 'react'
+import type { ChangeEvent, FocusEvent, FormEvent } from 'react'
 import { useState } from 'react'
-import { Mail, Phone, Send } from 'lucide-react'
+import { AlertCircle, CheckCircle2, Mail, Phone, Send } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 const gmailComposeBase = 'https://mail.google.com/mail/?view=cm&fs=1'
 const contactEmail = 'bittstechinfo@gmail.com'
+const fieldNames = ['name', 'mobile', 'email', 'query'] as const
+
+type FieldName = (typeof fieldNames)[number]
+type FormValues = Record<FieldName, string>
+type FieldState = Record<FieldName, boolean>
+type ValidationErrors = Partial<Record<FieldName, string>>
+
+const initialValues: FormValues = {
+  name: '',
+  mobile: '',
+  email: '',
+  query: '',
+}
+
+const initialTouched: FieldState = {
+  name: false,
+  mobile: false,
+  email: false,
+  query: false,
+}
+
+function validateForm(values: FormValues) {
+  const errors: ValidationErrors = {}
+  const name = values.name.trim()
+  const mobile = values.mobile.trim()
+  const email = values.email.trim()
+  const query = values.query.trim()
+
+  if (!name) {
+    errors.name = 'Please enter your name.'
+  }
+
+  if (!mobile) {
+    errors.mobile = 'Please enter your mobile number.'
+  } else {
+    const digits = mobile.replace(/\D/g, '')
+    const plusCount = mobile.split('+').length - 1
+    const hasInvalidCharacters = /[^\d+\s().-]/.test(mobile)
+    const hasMisplacedPlus = mobile.includes('+') && !mobile.startsWith('+')
+
+    if (hasInvalidCharacters || plusCount > 1 || hasMisplacedPlus) {
+      errors.mobile = 'Use digits only, with optional +, spaces, hyphens, or brackets.'
+    } else if (digits.length < 10 || digits.length > 15) {
+      errors.mobile = 'Mobile number must contain 10 to 15 digits.'
+    } else if (/^(\d)\1+$/.test(digits)) {
+      errors.mobile = 'Please enter a real mobile number.'
+    }
+  }
+
+  if (!email) {
+    errors.email = 'Please enter your email address.'
+  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    errors.email = 'Please enter a valid email address.'
+  }
+
+  if (!query) {
+    errors.query = 'Please enter your business query.'
+  }
+
+  return errors
+}
+
+function hasErrors(errors: ValidationErrors) {
+  return fieldNames.some((field) => Boolean(errors[field]))
+}
+
+function FieldError({ id, message }: { id: string; message?: string }) {
+  if (!message) return null
+
+  return (
+    <p id={id} role="alert" className="flex items-start gap-1.5 text-xs font-medium text-red-200">
+      <AlertCircle className="mt-0.5 size-3.5 shrink-0" />
+      <span>{message}</span>
+    </p>
+  )
+}
 
 export function CTA() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
   const [message, setMessage] = useState('')
+  const [values, setValues] = useState<FormValues>(initialValues)
+  const [touched, setTouched] = useState<FieldState>(initialTouched)
+  const [submitAttempted, setSubmitAttempted] = useState(false)
+
+  const errors = validateForm(values)
+
+  function visibleError(field: FieldName) {
+    return touched[field] || submitAttempted || values[field].trim()
+      ? errors[field]
+      : undefined
+  }
+
+  function inputClass(field: FieldName) {
+    const error = visibleError(field)
+
+    return `rounded-xl border bg-white/10 px-4 text-sm text-background outline-none transition-colors placeholder:text-background/45 ${
+      error ? 'border-red-300/70 focus:border-red-200' : 'border-white/10 focus:border-accent'
+    }`
+  }
+
+  function handleChange(field: FieldName) {
+    return (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      setValues((currentValues) => ({
+        ...currentValues,
+        [field]: event.currentTarget.value,
+      }))
+
+      if (status === 'sent' || status === 'error') {
+        setStatus('idle')
+        setMessage('')
+      }
+    }
+  }
+
+  function handleBlur(field: FieldName) {
+    return (_event: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      setTouched((currentTouched) => ({
+        ...currentTouched,
+        [field]: true,
+      }))
+    }
+  }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
-    const form = event.currentTarget
-    if (!form.reportValidity()) return
+    setSubmitAttempted(true)
+    setTouched({
+      name: true,
+      mobile: true,
+      email: true,
+      query: true,
+    })
 
-    const data = new FormData(form)
-    const name = String(data.get('name') ?? '')
-    const mobile = String(data.get('mobile') ?? '')
-    const email = String(data.get('email') ?? '')
-    const query = String(data.get('query') ?? '')
+    const nextErrors = validateForm(values)
+
+    if (hasErrors(nextErrors)) {
+      setStatus('error')
+      setMessage('Please fix the highlighted details before sending.')
+      return
+    }
+
+    const payload = {
+      name: values.name.trim(),
+      mobile: values.mobile.trim(),
+      email: values.email.trim(),
+      query: values.query.trim(),
+    }
 
     setStatus('sending')
     setMessage('')
@@ -31,7 +163,7 @@ export function CTA() {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, mobile, email, query }),
+        body: JSON.stringify(payload),
       })
       const result = await response.json()
 
@@ -39,21 +171,15 @@ export function CTA() {
         throw new Error(result.error ?? 'Failed to send your request.')
       }
 
-      form.reset()
+      setValues(initialValues)
+      setTouched(initialTouched)
+      setSubmitAttempted(false)
       setStatus('sent')
       setMessage('Your request has been sent. We will get back to you shortly.')
     } catch (error) {
       setStatus('error')
       setMessage(error instanceof Error ? error.message : 'Failed to send your request.')
     }
-  }
-
-  function requireDetails(event: InvalidEvent<HTMLInputElement | HTMLTextAreaElement>) {
-    event.currentTarget.setCustomValidity('Please enter the details')
-  }
-
-  function clearValidation(event: FormEvent<HTMLInputElement | HTMLTextAreaElement>) {
-    event.currentTarget.setCustomValidity('')
   }
 
   return (
@@ -97,51 +223,90 @@ export function CTA() {
           </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="relative z-10 grid gap-3 rounded-3xl border border-white/10 bg-white/[0.07] p-4 backdrop-blur-xl sm:p-5">
+        <form noValidate onSubmit={handleSubmit} className="relative z-10 grid gap-3 rounded-3xl border border-white/10 bg-white/[0.07] p-4 backdrop-blur-xl sm:p-5">
           {['Your Name', 'Mobile Number', 'Email Address', 'Business Query'].map((label) => (
             <label key={label} className="sr-only">
               {label}
             </label>
           ))}
+          {message && (
+            <div
+              role={status === 'error' ? 'alert' : 'status'}
+              aria-live="polite"
+              className={`flex items-start gap-2 rounded-2xl border px-4 py-3 text-sm font-medium ${
+                status === 'sent'
+                  ? 'border-accent/40 bg-accent/15 text-background'
+                  : 'border-red-300/30 bg-red-500/15 text-red-100'
+              }`}
+            >
+              {status === 'sent' ? (
+                <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-accent" />
+              ) : (
+                <AlertCircle className="mt-0.5 size-4 shrink-0" />
+              )}
+              <span>{message}</span>
+            </div>
+          )}
           <input
+            id="contact-name"
             name="name"
             aria-label="Your Name"
+            aria-invalid={Boolean(visibleError('name'))}
+            aria-describedby={visibleError('name') ? 'contact-name-error' : undefined}
+            autoComplete="name"
             placeholder="Your Name"
-            required
-            onInvalid={requireDetails}
-            onInput={clearValidation}
-            className="h-12 rounded-xl border border-white/10 bg-white/10 px-4 text-sm text-background outline-none transition-colors placeholder:text-background/45 focus:border-accent"
+            value={values.name}
+            onBlur={handleBlur('name')}
+            onChange={handleChange('name')}
+            className={`h-12 ${inputClass('name')}`}
           />
+          <FieldError id="contact-name-error" message={visibleError('name')} />
           <input
+            id="contact-mobile"
             name="mobile"
             type="tel"
             aria-label="Mobile Number"
+            aria-invalid={Boolean(visibleError('mobile'))}
+            aria-describedby={visibleError('mobile') ? 'contact-mobile-error' : undefined}
+            autoComplete="tel"
+            inputMode="tel"
             placeholder="Mobile Number"
-            required
-            onInvalid={requireDetails}
-            onInput={clearValidation}
-            className="h-12 rounded-xl border border-white/10 bg-white/10 px-4 text-sm text-background outline-none transition-colors placeholder:text-background/45 focus:border-accent"
+            value={values.mobile}
+            onBlur={handleBlur('mobile')}
+            onChange={handleChange('mobile')}
+            className={`h-12 ${inputClass('mobile')}`}
           />
+          <FieldError id="contact-mobile-error" message={visibleError('mobile')} />
           <input
+            id="contact-email"
             name="email"
             type="email"
             aria-label="Email Address"
+            aria-invalid={Boolean(visibleError('email'))}
+            aria-describedby={visibleError('email') ? 'contact-email-error' : undefined}
+            autoComplete="email"
             placeholder="Email Address"
-            required
-            onInvalid={requireDetails}
-            onInput={clearValidation}
-            className="h-12 rounded-xl border border-white/10 bg-white/10 px-4 text-sm text-background outline-none transition-colors placeholder:text-background/45 focus:border-accent"
+            value={values.email}
+            onBlur={handleBlur('email')}
+            onChange={handleChange('email')}
+            className={`h-12 ${inputClass('email')}`}
           />
+          <FieldError id="contact-email-error" message={visibleError('email')} />
           <textarea
+            id="contact-query"
             name="query"
             aria-label="Business Query"
+            aria-invalid={Boolean(visibleError('query'))}
+            aria-describedby={visibleError('query') ? 'contact-query-error' : undefined}
+            autoComplete="off"
             placeholder="Business Query"
             rows={5}
-            required
-            onInvalid={requireDetails}
-            onInput={clearValidation}
-            className="resize-none rounded-xl border border-white/10 bg-white/10 px-4 py-3 text-sm text-background outline-none transition-colors placeholder:text-background/45 focus:border-accent"
+            value={values.query}
+            onBlur={handleBlur('query')}
+            onChange={handleChange('query')}
+            className={`resize-none py-3 ${inputClass('query')}`}
           />
+          <FieldError id="contact-query-error" message={visibleError('query')} />
           <button
             type="submit"
             disabled={status === 'sending'}
@@ -150,15 +315,6 @@ export function CTA() {
             {status === 'sending' ? 'Sending...' : 'Send My Request'}
             <Send className="size-4" />
           </button>
-          {message && (
-            <p
-              className={`text-sm ${
-                status === 'sent' ? 'text-accent' : 'text-red-200'
-              }`}
-            >
-              {message}
-            </p>
-          )}
         </form>
       </motion.div>
     </section>
