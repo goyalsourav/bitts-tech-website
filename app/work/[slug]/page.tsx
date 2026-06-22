@@ -22,13 +22,22 @@ export async function generateMetadata({
 
   if (!project) {
     return {
-      title: 'Work - BittsTech',
+      title: 'Bitts Tech',
     }
   }
 
   return {
-    title: `${project.title} - BittsTech`,
+    title: 'Bitts Tech',
     description: project.summary,
+    alternates: {
+      canonical: `/work/${project.slug}`,
+    },
+    openGraph: {
+      title: `${project.title} - BittsTech`,
+      description: project.summary,
+      url: `/work/${project.slug}`,
+      type: 'article',
+    },
   }
 }
 
@@ -41,9 +50,53 @@ export default async function WorkDetailPage({
   const project = getWorkProject(slug)
 
   if (!project) notFound()
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'CreativeWork',
+        name: project.title,
+        description: project.summary,
+        about: project.industry,
+        creator: {
+          '@type': 'Organization',
+          name: 'BittsTech',
+          url: 'https://www.bittstech.com',
+        },
+        url: `https://www.bittstech.com/work/${project.slug}`,
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: 'https://www.bittstech.com',
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Work',
+            item: 'https://www.bittstech.com/#showcase',
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: project.title,
+            item: `https://www.bittstech.com/work/${project.slug}`,
+          },
+        ],
+      },
+    ],
+  }
 
   return (
     <main className="relative overflow-x-clip bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <ScrollProgress />
       <Navbar />
 

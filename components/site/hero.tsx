@@ -68,8 +68,8 @@ export function Hero() {
           </motion.div>
 
           <h1 className="mt-7 max-w-3xl font-heading text-4xl font-bold leading-[1.05] tracking-tight text-foreground text-balance sm:text-5xl lg:text-6xl xl:text-[4.25rem]">
-            Transform your growing business with{' '}
-            <span className="text-gradient">our IT solutions</span>
+            Custom Website & Web App Development{' '}
+            <span className="text-gradient">Agency in India</span>
           </h1>
 
           <motion.p
@@ -79,9 +79,8 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.55 }}
             className="mt-6 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg"
           >
-            We design, build, and launch custom websites, web apps,
-            automations, and business systems that solve real operational
-            problems.
+            BittsTech builds fast websites, web applications, business
+            automation systems, and custom software for growing businesses.
           </motion.p>
 
           <motion.div
@@ -95,14 +94,14 @@ export function Hero() {
               href="#contact"
               className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-[0_10px_30px_rgba(40,80,200,0.3)] transition-transform hover:-translate-y-0.5 sm:w-auto"
             >
-              Get in touch
+              Book a Website / Software Consultation
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
             </a>
             <a
               href="#services"
               className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-border bg-card px-7 py-3.5 text-sm font-semibold text-foreground transition-colors hover:bg-muted sm:w-auto"
             >
-              Learn more
+              Explore services
             </a>
           </motion.div>
 
@@ -115,14 +114,14 @@ export function Hero() {
           >
             {[
               { icon: Workflow, label: 'Projects delivered' },
-              { icon: TimerReset, label: '4.32x revenue lift' },
               { icon: ShieldCheck, label: 'API + UI integrations' },
-            ].map((item) => {
+              { icon: TimerReset, label: '4.32x revenue lift' },
+            ].map((item, index) => {
               const Icon = item.icon
               return (
                 <span
                   key={item.label}
-                  className="flex items-center gap-2 rounded-full border border-border/70 bg-card/60 px-3 py-2 backdrop-blur"
+                  className={`flex items-center gap-2 rounded-full border border-border/70 bg-card/60 px-3 py-2 backdrop-blur ${index === 2 ? 'mx-auto sm:mx-0' : ''}`}
                 >
                   <Icon className="size-4 text-primary" />
                   {item.label}
@@ -133,7 +132,7 @@ export function Hero() {
         </motion.div>
 
         <motion.div
-          className="relative z-0 mx-auto mt-8 w-full max-w-[390px] md:mt-0 md:max-w-[460px] lg:max-w-[500px]"
+          className="relative z-0 mx-auto mt-8 hidden w-full max-w-[390px] md:mt-0 md:block md:max-w-[460px] lg:max-w-[500px]"
           initial={{ opacity: 0, scale: 0.96, y: 24 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.82, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}

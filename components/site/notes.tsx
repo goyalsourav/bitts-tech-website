@@ -49,7 +49,7 @@ export function Notes() {
               </button>
             </div>
           </div>
-          <Link href="/blog/business-automation-reduces-manual-work" className="inline-flex items-center gap-2 text-sm font-semibold text-primary">
+          <Link href="/blog" className="inline-flex items-center gap-2 text-sm font-semibold text-primary">
             Explore all
             <ArrowRight className="size-4" />
           </Link>
@@ -76,8 +76,8 @@ export function Notes() {
                 </div>
                 <div className="mt-8 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-accent">
                   <span>BT</span>
-                  <span>BittsTech Team</span>
-                  <span>2026</span>
+                  <span>{note.author}</span>
+                  <span>{note.year}</span>
                 </div>
                 <p className="mt-2 text-xs font-semibold uppercase tracking-[0.18em] text-primary">
                   {note.category}

@@ -1,6 +1,6 @@
 import { SectionHeading } from './section-heading'
 
-const faqs = [
+export const faqs = [
   {
     q: 'What kinds of businesses do you work with?',
     a: 'We work with businesses of all sizes, from solo founders to growing SMBs. If you have a process, workflow, or customer journey that needs a digital solution, we can build it.',

@@ -64,9 +64,107 @@ export function HeroVisual({
   parallaxY: MotionValue<number>
 }) {
   return (
+    <>
+      <MobileHeroVisual />
+      <div
+        className="relative mx-auto hidden aspect-square w-full max-w-[320px] sm:max-w-[440px] md:block lg:max-w-[500px]"
+        style={{ perspective: '1400px' }}
+      >
+        <DesktopHeroVisual parallaxX={parallaxX} parallaxY={parallaxY} />
+      </div>
+    </>
+  )
+}
+
+function MobileHeroVisual() {
+  return (
+    <div className="relative mx-auto aspect-[1.05] w-full max-w-[330px] md:hidden">
+      <motion.div
+        aria-hidden="true"
+        className="absolute inset-[9%] rounded-full border border-primary/15 fine-grid mask-soft"
+        animate={{ rotate: 360 }}
+        transition={{ duration: 42, repeat: Number.POSITIVE_INFINITY, ease: 'linear' }}
+      />
+      <motion.div
+        aria-hidden="true"
+        className="absolute inset-[23%] rounded-full border border-accent/25"
+        animate={{ rotate: -360 }}
+        transition={{ duration: 30, repeat: Number.POSITIVE_INFINITY, ease: 'linear' }}
+      />
+
+      <div className="absolute left-1/2 top-[43%] flex size-36 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-[2rem] border border-border/75 bg-card/80 shadow-[0_28px_70px_-42px_rgba(30,50,110,0.7)] backdrop-blur-xl">
+        <motion.img
+          src="/bitts-tech-logo.png"
+          alt=""
+          className="size-24 object-contain"
+          animate={{ y: [0, -8, 0] }}
+          transition={{ duration: 6, repeat: Number.POSITIVE_INFINITY, ease: 'easeInOut' }}
+        />
+      </div>
+
+      {[
+        { label: 'Websites', icon: Layers3, className: 'left-2 top-10' },
+        { label: 'Apps', icon: Code2, className: 'right-2 top-16' },
+        { label: 'Automation', icon: Network, className: 'left-0 bottom-24' },
+        { label: 'Support', icon: Cloud, className: 'right-1 bottom-20' },
+      ].map((item, index) => {
+        const Icon = item.icon
+
+        return (
+          <motion.div
+            key={item.label}
+            className={`absolute ${item.className} flex items-center gap-2 rounded-full border border-border/80 bg-card/90 px-3 py-2 text-xs font-semibold text-foreground shadow-[0_18px_35px_-28px_rgba(30,50,110,0.8)] backdrop-blur-xl`}
+            initial={{ opacity: 0, scale: 0.9, y: 10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ delay: 0.35 + index * 0.1, duration: 0.45 }}
+          >
+            <Icon className="size-3.5 text-primary" />
+            {item.label}
+          </motion.div>
+        )
+      })}
+
+      <motion.div
+        className="absolute inset-x-7 bottom-1 rounded-2xl border border-border/80 bg-card/92 p-4 shadow-[0_28px_65px_-38px_rgba(30,50,110,0.75)] backdrop-blur-xl"
+        initial={{ opacity: 0, y: 18 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.72, duration: 0.55 }}
+      >
+        <div className="flex items-center justify-between">
+          <span className="flex items-center gap-2 text-xs font-semibold text-muted-foreground">
+            <span className="relative flex size-2">
+              <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary/60" />
+              <span className="relative inline-flex size-2 rounded-full bg-primary" />
+            </span>
+            Business system ready
+          </span>
+          <Check className="size-4 text-primary" />
+        </div>
+        <div className="mt-3 grid grid-cols-3 gap-2">
+          {['Plan', 'Build', 'Launch'].map((step) => (
+            <div
+              key={step}
+              className="rounded-xl bg-secondary px-2.5 py-2 text-center text-[11px] font-semibold text-muted-foreground"
+            >
+              {step}
+            </div>
+          ))}
+        </div>
+      </motion.div>
+    </div>
+  )
+}
+
+function DesktopHeroVisual({
+  parallaxX,
+  parallaxY,
+}: {
+  parallaxX: MotionValue<number>
+  parallaxY: MotionValue<number>
+}) {
+  return (
     <div
-      className="relative mx-auto aspect-square w-full max-w-[320px] sm:max-w-[440px] lg:max-w-[500px]"
-      style={{ perspective: '1400px' }}
+      className="relative size-full"
     >
       <motion.div
         aria-hidden="true"

@@ -7,28 +7,30 @@ const columns = [
   {
     title: 'Quick Link',
     links: [
-      { label: 'Home', href: '#top' },
-      { label: 'Service', href: '#services' },
-      { label: 'Our Work', href: '#showcase' },
-      { label: 'FAQs', href: '#faqs' },
+      { label: 'Home', href: '/#top' },
+      { label: 'Services', href: '/#services' },
+      { label: 'Our Work', href: '/#showcase' },
+      { label: 'Blog', href: '/blog' },
+      { label: 'FAQs', href: '/#faqs' },
     ],
   },
   {
     title: 'Useful Link',
     links: [
-      { label: 'Custom Websites', href: '#services' },
-      { label: 'Web Applications', href: '#services' },
-      { label: 'Automation', href: '#services' },
-      { label: 'Integrations', href: '#services' },
-      { label: 'Contact', href: '#contact' },
+      { label: 'Custom Websites', href: '/services/custom-website-development' },
+      { label: 'Web Applications', href: '/services/web-application-development' },
+      { label: 'Automation', href: '/services/business-automation' },
+      { label: 'Integrations', href: '/services/api-integrations' },
+      { label: 'Contact', href: '/#contact' },
     ],
   },
   {
     title: 'Project Links',
     links: [
-      { label: 'Travel Agency Suite', href: '#showcase' },
-      { label: 'Construction Suite', href: '#showcase' },
-      { label: 'Book a Project Call', href: '#contact' },
+      { label: 'Travel Agency Platform', href: '/work/travel-agency-management-platform' },
+      { label: 'Construction Software', href: '/work/construction-management-software' },
+      { label: 'Privacy Policy', href: '/privacy-policy' },
+      { label: 'Terms', href: '/terms' },
     ],
   },
 ]

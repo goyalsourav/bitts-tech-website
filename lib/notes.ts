@@ -1,27 +1,105 @@
 export const notes = [
   {
-    slug: 'business-automation-reduces-manual-work',
-    category: 'Automation',
-    read: '10min',
-    title: 'How Business Automation Reduces Daily Manual Work',
+    slug: 'why-websites-are-important',
+    category: 'Web Development / Digital Marketing',
+    read: '12min',
+    title: 'Why Websites Are Important: The Complete Guide for Modern Businesses',
+    titleTag: 'Why Websites Are Important: The Complete 2026 Guide for Businesses',
+    metaDescription:
+      'Why is a website important for your business? See the research-backed reasons, real conversion data, and the essential elements every website needs to win customers.',
     excerpt:
-      'A practical look at repetitive work, handoffs, reminders, and the systems that can remove daily drag.',
+      'A field guide to what a website does, why it matters, and what yours actually needs.',
+    focusKeyword: 'why websites are important',
+    secondaryKeywords: [
+      'importance of a website for business',
+      'benefits of having a website',
+      'why every business needs a website',
+      'what should a website contain',
+      'website essentials checklist',
+      'online presence for business',
+      'website credibility',
+    ],
+    image: '/blog/why-websites-are-important-featured.png',
+    imageAlt: 'business owner reviewing website analytics dashboard',
+    author: 'BittsTech Team',
+    year: '2026',
   },
   {
-    slug: 'prepare-before-building-custom-website',
-    category: 'Web Apps',
-    read: '8min',
-    title: 'What to Prepare Before Building a Custom Website',
+    slug: 'why-seo-is-important-business-growth',
+    category: 'Digital Marketing / SEO',
+    read: '13min',
+    title: 'Why SEO Is Important: How It Drives Long-Term Business Growth',
+    titleTag: 'Why SEO Is Important: How It Drives Business Growth in 2026',
+    metaDescription:
+      "Why is SEO important for business growth? See the data on organic traffic, ranking CTR, and ROI versus paid ads — plus what's necessary for SEO and where to focus first.",
     excerpt:
-      'A simple planning guide for goals, pages, workflows, content, and decisions before development starts.',
+      'A field guide to what SEO does, why it compounds, and where to focus first.',
+    focusKeyword: 'why SEO is important',
+    secondaryKeywords: [
+      'importance of SEO for business',
+      'how to improve SEO',
+      'SEO ranking factors',
+      'on-page vs off-page SEO',
+      'local SEO benefits',
+      'SEO for business growth',
+      'what is necessary for SEO',
+    ],
+    image: '/blog/why-seo-is-important-featured.png',
+    imageAlt:
+      'Google search results page with ranking positions and click-through rates labeled',
+    author: 'BittsTech Team',
+    year: '2026',
   },
   {
-    slug: 'post-go-live-support-matters',
-    category: 'Support',
-    read: '7min',
-    title: 'Why Post Go-live Support Matters for Software Teams',
+    slug: 'website-revamp-checklist-before-running-ads',
+    category: 'Web Development / Paid Advertising',
+    read: '13min',
+    title:
+      'Website Revamp Checklist Before Running Ads: The Pre-Launch Audit That Protects Your Budget',
+    titleTag: 'Website Revamp Checklist Before Running Ads (2026 Pre-Launch Audit)',
+    metaDescription:
+      "Don't launch ads on an unready site. This website revamp checklist covers speed, message match, conversion elements, and tracking — backed by real Quality Score and conversion data.",
     excerpt:
-      'Launch is only the beginning. Support keeps products stable, useful, and aligned with real users.',
+      'A pre-launch audit covering speed, message match, conversion, and tracking — before you spend.',
+    focusKeyword: 'website revamp checklist before running ads',
+    secondaryKeywords: [
+      'pre-launch website audit',
+      'landing page checklist for ads',
+      'website ready for ads',
+      'Google Ads landing page experience',
+      'conversion rate optimization checklist',
+      'website audit before PPC',
+    ],
+    image: '/blog/website-revamp-checklist-featured.png',
+    imageAlt: 'before and after website audit checklist diagram',
+    author: 'BittsTech Team',
+    year: '2026',
+  },
+  {
+    slug: 'grow-small-business-online-india',
+    category: 'Digital Growth / Small Business',
+    read: '13min',
+    title:
+      'How to Grow Your Small Business Online in India: A Practical 2026 Playbook',
+    titleTag: 'How to Grow Your Small Business Online in India (2026 Playbook)',
+    metaDescription:
+      'A practical, data-backed playbook for growing a small business online in India: website, WhatsApp, local SEO, and UPI, built for how Indian customers actually shop.',
+    excerpt:
+      'A field guide to website, WhatsApp, SEO, and UPI, built for how India actually shops online.',
+    focusKeyword: 'grow small business online in India',
+    secondaryKeywords: [
+      'digital marketing for small business India',
+      'online presence for Indian SMBs',
+      'WhatsApp Business India',
+      'local SEO India',
+      'UPI for small business',
+      'how to grow business online India',
+    ],
+    image: '/blog/grow-small-business-online-india-featured.png',
+    imageAlt:
+      'five-stage digital growth funnel for Indian small businesses: discover, message, trust, pay, repeat',
+    author: 'BittsTech Team',
+    year: '2026',
   },
 ] as const
 

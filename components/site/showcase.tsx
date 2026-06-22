@@ -6,8 +6,8 @@ import { ArrowLeft, ArrowRight, Building2, Plane } from 'lucide-react'
 import { workProjects } from '@/lib/work-projects'
 
 const icons = {
-  'travel-suite': Plane,
-  'construction-suite': Building2,
+  'travel-agency-management-platform': Plane,
+  'construction-management-software': Building2,
 }
 
 export function Showcase() {
